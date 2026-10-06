@@ -1,0 +1,510 @@
+{
+  "basicInfo": {
+    "name": "熊阳",
+    "title": "机器人工程（本科） · 具身智能方向",
+    "bio": "上海海洋大学机器人工程专业2023级本科生（双一流），研究方向为多智能体强化学习与具身视觉感知。已发表13篇SCI一/二区论文，第一作者论文发表于Journal of Marine Science and Engineering（JCR Q2）；曾在广西柳药集团（A股603368）与乾锦智能装备实习，分别从事智能决策与Agent算法研发、机器人视觉检测。获全国大学生节能减排竞赛全国二等奖（2项）、iCAN上海赛区一等奖、西门子杯华东赛区一等奖等保研认定赛事奖项。",
+    "email": "andy799775362@163.com",
+    "github": "",
+    "wechat": ""
+  },
+  "navigation": [
+    {
+      "name": "首页",
+      "href": "#home"
+    },
+    {
+      "name": "关于我",
+      "href": "#about"
+    },
+    {
+      "name": "项目展示",
+      "href": "#projects"
+    },
+    {
+      "name": "视频动态",
+      "href": "#videos"
+    },
+    {
+      "name": "荣誉证书",
+      "href": "#certifications"
+    },
+    {
+      "name": "联系方式",
+      "href": "#contact"
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "group": "论文发表",
+      "type": "direction",
+      "title": "研究方向一 · 多智能体强化学习与具身协同决策",
+      "description": "聚焦多无人艇（Multi-USV）等具身智能体在对抗博弈与协同任务中的自主决策问题：以图注意力网络（GAT）与 Transformer 构建时空推理骨干，采用\"集中训练、分散执行\"（CTDE）范式，结合元强化学习与课程学习，应对通信受限、传感器异构、对手自适应等真实海洋环境挑战。"
+    },
+    {
+      "id": 2,
+      "group": "论文发表",
+      "title": "第一作者论文 · 多USV对抗博弈的时空元强化学习",
+      "description": "论文题目《Spatiotemporal Meta-Reinforcement Learning for Multi-USV Adversarial Games Using a Hybrid GAT-Transformer》。提出Adv-TransAC时空元强化学习框架：GAT-Transformer+CTDE架构与动态多模态注意力融合，实现空间建模、时序推理与异构传感器融合；引入对抗元学习与课程学习，对抗成功率78.5%，通信带宽降低约70%，单步推理18.6ms。",
+      "link": "#",
+      "tags": [
+        "第一作者",
+        "多智能体强化学习",
+        "GAT",
+        "Transformer",
+        "CTDE",
+        "PyTorch"
+      ],
+      "gallery": [
+        {
+          "img": "assets/research_paper_figs/jmse_advtransac_framework.png",
+          "caption": "Figure 2 · 研究方法总框架",
+          "name": "论文配图 Figure 2 · Adv-TransAC 研究方法总框架（JMSE 2025，第一作者）",
+          "span": 2
+        },
+        {
+          "img": "assets/research_paper_figs/jmse_meta_learning_architecture.png",
+          "caption": "Figure 3 · 对抗元学习架构",
+          "name": "论文配图 Figure 3 · 对抗元学习架构：对手编码器 + GNN-Transformer 基座策略 + 元调节器与课程学习调度"
+        },
+        {
+          "img": "assets/research_paper_figs/jmse_multimodal_fusion_pipeline.png",
+          "caption": "Figure 4 · 动态多模态融合管线",
+          "name": "论文配图 Figure 4 · 动态多模态融合管线：雷达点云 / 占据栅格 / 威胁热图时空对齐与融合"
+        },
+        {
+          "img": "assets/research_paper_certification/paper_jmse_multi_usv_meta_rl_2025.png",
+          "caption": "出版证书 · 第一作者",
+          "name": "Spatiotemporal Meta-RL for Multi-USV Adversarial Games（JMSE 2025，第一作者）出版证书",
+          "span": 2
+        }
+      ],
+      "reverse": false,
+      "venue": "Journal of Marine Science and Engineering · SCI 收录 · JCR Q2 · IF 2.8"
+    },
+    {
+      "id": 3,
+      "group": "论文发表",
+      "type": "direction",
+      "title": "研究方向二 · 具身视觉感知与边缘部署",
+      "description": "面向果园、珊瑚礁等真实场景，研究轻量化目标检测与智能光学感知：让模型在遮挡、光照退化、小目标等困难条件下保持稳定的识别与预测，并落地到 Jetson 等边缘设备实时推理，服务智慧农业与海洋栖息地监测等具身应用。以下两篇姊妹篇共同构成该方向的技术栈。"
+    },
+    {
+      "id": 4,
+      "group": "论文发表",
+      "title": "论文一 · Orchard-YOLO：复杂光学环境下的果园果实检测",
+      "description": "论文正式题目（以期刊证书为准）《Orchard-YOLO: A Robust Deep Learning Framework for Fruit Detection under Complex Optical and Environmental Degradation》。参与轻量化检测网络研发与边缘部署：Ghost 卷积骨干 + CA 增强特征融合 + P2 高分辨率检测头，实现遮挡与光照鲁棒识别及 Jetson 边缘设备实时推理。",
+      "link": "#",
+      "tags": [
+        "第四作者",
+        "YOLO",
+        "轻量化",
+        "Jetson",
+        "边缘部署",
+        "Photonics"
+      ],
+      "gallery": [
+        {
+          "img": "assets/research_paper_figs/orchardyolo_architecture.png",
+          "caption": "Figure 2 · Orchard-YOLO 整体架构",
+          "name": "论文配图 Figure 2 · Orchard-YOLO 整体架构：Ghost 卷积骨干 + CA 增强特征融合 + P2 高分辨率检测头（Photonics 2026）",
+          "span": 2
+        },
+        {
+          "img": "assets/research_paper_figs/orchardyolo_occlusion_results.jpg",
+          "caption": "Figure 8 · 遮挡递增检测成果",
+          "name": "论文配图 Figure 8 · 清洁 / 30% / 70% 遮挡下检测成果对比：重度遮挡下 YOLOv13 仍保持更多果实定位"
+        },
+        {
+          "img": "assets/research_paper_figs/orchardyolo_robustness.png",
+          "caption": "Figure 11 · 鲁棒性得分对比",
+          "name": "论文配图 Figure 11 · 遮挡/光照/尺度/复合应力下的鲁棒性得分对比（YOLOv13 相对 YOLOv8 全面占优）"
+        },
+        {
+          "img": "assets/research_paper_certification/paper_photonics_orchard_yolo_2026.jpg",
+          "caption": "出版证书 · 第四作者",
+          "name": "Orchard-YOLO（Photonics 2026，第四作者）出版证书",
+          "span": 2
+        }
+      ],
+      "reverse": true,
+      "venue": "Photonics · SCI 收录 · JCR Q2 · 第四作者"
+    },
+    {
+      "id": 5,
+      "group": "论文发表",
+      "title": "论文二 · Coral-YOLO：面向珊瑚礁海洋监测的智能光学感知",
+      "description": "参与智能光学视觉感知框架中检测与预测部分的实现：局部-全局注意力（LGA）单元与时序预测模块，提升小目标、遮挡与跨域场景下的检测稳定性及时序预测能力，用于高保真海洋栖息地监测与预报。",
+      "link": "#",
+      "tags": [
+        "第五作者",
+        "YOLO",
+        "目标检测",
+        "时序预测",
+        "海洋感知",
+        "Sensors"
+      ],
+      "gallery": [
+        {
+          "img": "assets/research_paper_figs/coralyolo_architecture.png",
+          "caption": "Figure 1 · Coral-YOLO 整体架构",
+          "name": "论文配图 Figure 1 · Coral-YOLO 整体架构：时序图像输入、多项创新的检测框架（Sensors 2025）"
+        },
+        {
+          "img": "assets/research_paper_figs/coralyolo_training_dynamics.png",
+          "caption": "Figure 7 · 训练过程",
+          "name": "论文配图 Figure 7 · CR-Mix 验证集训练过程：Coral-YOLO 的 mAP 收敛速度与精度显著高于基线"
+        },
+        {
+          "img": "assets/research_paper_figs/coralyolo_detection_compare.jpg",
+          "caption": "Figure 9 · 检测成果对比",
+          "name": "论文配图 Figure 9 · 真实珊瑚礁场景检测与预测成果对比（Coral-YOLO vs 基线）",
+          "span": 2
+        },
+        {
+          "img": "assets/research_paper_figs/coralyolo_heatmap.jpg",
+          "caption": "Figure 10 · Grad-CAM 热力图",
+          "name": "论文配图 Figure 10 · Grad-CAM 诊断：Coral-YOLO 的注意力更聚焦珊瑚目标区域",
+          "span": 2
+        },
+        {
+          "img": "assets/research_paper_certification/paper_sensors_coral_yolo_2025.jpg",
+          "caption": "出版证书 · 第五作者",
+          "name": "Coral-YOLO（Sensors 2025，第五作者）出版证书"
+        }
+      ],
+      "reverse": false,
+      "venue": "Sensors · SCI 收录 · JCR Q2 · 第五作者"
+    },
+    {
+      "id": 6,
+      "group": "工作经历",
+      "title": "实习一：智能决策与Agent算法研发（广西柳药集团 · A股603368 · 2026.07-09）",
+      "description": "实习项目：基于CV/OCR+文本多模态，实现界面动作、时序日志与源表字段的高精度关联与行为序列对齐；参与设计基于示范学习（LfD）的GUI自动化Agent方案、自动化脚本与查询映射模块；参与数据脱敏与数据字典标准化，构建覆盖边界条件的鲁棒性测试集。",
+      "image": "assets/internship_certificate/liuyao_internship_certificate_cn.jpg",
+      "link": "#",
+      "tags": [
+        "多模态",
+        "OCR",
+        "LfD",
+        "GUI Agent",
+        "数据治理"
+      ],
+      "enCert": {
+        "img": "assets/internship_certificate/liuyao_internship_certificate_en.jpg",
+        "name": "实习证明（英文版）—— 广西柳药集团 Internship Certificate (EN)"
+      }
+    },
+    {
+      "id": 7,
+      "group": "工作经历",
+      "title": "实习二：机器人视觉检测（乾锦智能 · 上汽通用五菱产线 · 2026.01-04）",
+      "description": "实习项目：涂胶检测采用YOLO系列2D视觉检测，实现胶条有无、长宽度、断胶、偏移等缺陷快速识别；焊点检测采用线结构光三维测量+CV算法，实现焊点余高、咬边、错边高精度测量与表面缺陷识别；参与多传感器融合与智能决策模块开发。系统已部署于上汽通用五菱自动化生产线并稳定运行。",
+      "image": "assets/internship_certificate/qianjin_internship_certificate_cn.jpg",
+      "link": "#",
+      "tags": [
+        "YOLO",
+        "线结构光3D测量",
+        "OpenCV",
+        "缺陷检测"
+      ],
+      "enCert": {
+        "img": "assets/internship_certificate/qianjin_internship_certificate_en.jpg",
+        "name": "实习证明（英文版）—— 柳州乾锦智能装备 Internship Certificate (EN)"
+      }
+    },
+    {
+      "id": 8,
+      "group": "比赛经历",
+      "title": "智能巡检拾取多模态双足机器人（智巡清道 · 队长）",
+      "description": "担任队长（申报书第一申报人），主导总体方案与系统集成，构建\"有眼、有手、有脚、有脑\"的具身智能巡逻拾取系统：自研YOLOv8改进模型经两年迭代，四大类垃圾综合识别率从23%提升至85%，支持200+类校园垃圾与障碍物识别（红外运动相机保证日夜作业）；融合思岚S2L二维激光雷达、宇树L2三维激光雷达、IMU、GPS与视觉的多传感器SLAM（EKF联合优化前端 + G2O图优化 + 回环检测后端），支持2D栅格与3D稠密点云建图及区域语义标签；分层路径规划采用A*全局规划+DWA局部动态避障，冗余路径减少33.38%，整体作业效率提升12.4%；后置六舵机机械臂配合双目相机实现精准夹取与分类投放，四连杆轮足结构结合IMU姿态反馈与PD平衡控制，在草地、碎石等非结构化地形稳定行走；上层Jetson Orin Nano + 下层STM32上下位机架构，配套移动端可视化管理平台。基于本项目斩获\"挑战杯\"揭榜挂帅擂台赛全国三等奖（智慧环卫国产系统无人清扫车关键技术攻关·学生赛道·团队位次第2）、节能减排竞赛全国二等奖、iCAN上海赛区一等奖、西门子杯华东赛区一等奖、汇创青春上海市一等奖等。",
+      "image": "assets/project_biped/biped_project_cover.jpg",
+      "link": "#",
+      "tags": [
+        "YOLOv8",
+        "SLAM",
+        "A*+DWA",
+        "机械臂",
+        "Jetson Orin",
+        "双足轮足"
+      ]
+    }
+  ],
+  "textContent": [
+    {
+      "id": 1,
+      "title": "从机器人工程到具身智能",
+      "content": "我是熊阳，上海海洋大学（双一流）机器人工程专业2023级本科生（大四在读），平均分82.03，主修移动机器人创新实训、机器人操作系统与仿真、电路原理、数字电子技术、模拟电子技术。本科期间加入工程中心实验室并担任蔚蓝创新社社长（校内最大科创社团），围绕多智能体强化学习与具身协同决策、具身视觉感知与边缘部署两个方向开展科研，已发表13篇SCI一区/二区论文，其中以第一作者在Journal of Marine Science and Engineering发表多USV对抗博弈研究。"
+    },
+    {
+      "id": 2,
+      "title": "工程实践与未来规划",
+      "content": "我注重把算法落到真实系统上：在乾锦智能装备参与涂胶/焊点视觉检测系统研发并部署于上汽通用五菱自动化产线；在广西柳药集团（A股上市603368）从事智能决策与Agent算法研发。竞赛方面，作为队长带队获节能减排竞赛全国二等奖（2项）、挑战杯全国三等奖、iCAN上海赛区一等奖、西门子杯华东赛区一等奖、汇创青春上海市一等奖等。未来我希望在具身智能方向继续深造，探索多智能体协同与具身视觉的融合应用。"
+    }
+  ],
+  "videos": [
+    {
+      "id": 1,
+      "title": "智能双足巡检拾取机器人演示",
+      "description": "\"智巡清道\"双足轮足机器人：YOLOv8识别 + SLAM导航 + 机械臂拾取，实机演示视频（待替换为真实B站链接）",
+      "url": "https://www.bilibili.com/",
+      "type": "bilibili"
+    },
+    {
+      "id": 2,
+      "title": "多USV协同对抗算法仿真",
+      "description": "Adv-TransAC时空元强化学习框架多无人艇对抗博弈仿真视频（待替换为真实B站链接）",
+      "url": "https://www.bilibili.com/",
+      "type": "bilibili"
+    }
+  ],
+  "certifications": [
+    {
+      "category": "research paper certification",
+      "name": "Spatiotemporal Meta-RL for Multi-USV Adversarial Games（JMSE 2025，第一作者）",
+      "img": "assets/research_paper_certification/paper_jmse_multi_usv_meta_rl_2025.png"
+    },
+    {
+      "category": "research paper certification",
+      "name": "Orchard-YOLO（Photonics 2026，第四作者）",
+      "img": "assets/research_paper_certification/paper_photonics_orchard_yolo_2026.jpg"
+    },
+    {
+      "category": "research paper certification",
+      "name": "Evolving Collective Intelligence for Unmanned Marine Vehicle Swarms（JMSE 2026）",
+      "img": "assets/research_paper_certification/paper_jmse_federated_meta_learning_2026.jpg"
+    },
+    {
+      "category": "research paper certification",
+      "name": "Data-Driven Multi-Scale Channel-Aligned Transformer for Low-Carbon Vessel Operations（JMSE 2025）",
+      "img": "assets/research_paper_certification/paper_jmse_low_carbon_vessel_2025.png"
+    },
+    {
+      "category": "research paper certification",
+      "name": "Coral-YOLO（Sensors 2025，第五作者）",
+      "img": "assets/research_paper_certification/paper_sensors_coral_yolo_2025.jpg"
+    },
+    {
+      "category": "research paper certification",
+      "name": "FEGW-YOLO Multi-Crop Detection on Edge Devices（Sensors 2026）",
+      "img": "assets/research_paper_certification/paper_sensors_fegw_yolo_2026.jpg"
+    },
+    {
+      "category": "research paper certification",
+      "name": "Graph-Gated Relational Reasoning for Multi-Robot Systems（Sensors 2025）",
+      "img": "assets/research_paper_certification/paper_sensors_graph_gated_multi_robot_2025.jpg"
+    },
+    {
+      "category": "research paper certification",
+      "name": "Trustworthy AI-IoT: The IMTPS Framework（Sensors 2026）",
+      "img": "assets/research_paper_certification/paper_sensors_trustworthy_ai_iot_2026.jpg"
+    },
+    {
+      "category": "research paper certification",
+      "name": "AUV Swarm Control: Federated Meta-Transfer Learning（JMSE 2026）",
+      "img": "assets/research_paper_certification/paper_jmse_auv_swarm_federated_2026.jpg"
+    },
+    {
+      "category": "research paper certification",
+      "name": "Synergistic Hierarchical AI Framework for USV Navigation（Sensors 2025）",
+      "img": "assets/research_paper_certification/paper_sensors_usv_navigation_2025.png"
+    },
+    {
+      "category": "research paper certification",
+      "name": "DenseFish-v13 Underwater Fish Detection（Symmetry 2026）",
+      "img": "assets/research_paper_certification/paper_symmetry_densefish_v13_2026.jpg"
+    },
+    {
+      "category": "research paper certification",
+      "name": "Predictive Safety Control for Autonomous Surface Vehicles（Symmetry 2026）",
+      "img": "assets/research_paper_certification/paper_symmetry_predictive_safety_asv_2026.jpg"
+    },
+    {
+      "category": "patent",
+      "name": "发明专利申请公布 CN 122664263 A《一种双体船载投料装置》（上海海洋大学，2026）",
+      "img": "assets/patent/patent_cn122664263a_catamaran_feeder.jpg"
+    },
+    {
+      "category": "Internship certificate",
+      "name": "广西柳药集团实习证明（智能决策与Agent算法研发，2026.07-2026.09）",
+      "img": "assets/internship_certificate/liuyao_internship_certificate_cn.jpg"
+    },
+    {
+      "category": "Internship certificate",
+      "name": "Internship Certificate — Guangxi Liuyao Group (英文版)",
+      "img": "assets/internship_certificate/liuyao_internship_certificate_en.jpg",
+      "hidden": true
+    },
+    {
+      "category": "Internship certificate",
+      "name": "柳州乾锦智能装备实习证明（机器人视觉检测，2026.01-2026.04）",
+      "img": "assets/internship_certificate/qianjin_internship_certificate_cn.jpg"
+    },
+    {
+      "category": "Internship certificate",
+      "name": "Internship Certificate — Qianjin Intelligent Equipment (英文版)",
+      "img": "assets/internship_certificate/qianjin_internship_certificate_en.jpg",
+      "hidden": true
+    },
+    {
+      "category": "competition certifications",
+      "name": "全国大学生数学建模竞赛 上海市二等奖 · 队长（2025）",
+      "img": "assets/competition_certifications/cumcm_shanghai_2nd_2025.jpg"
+    },
+    {
+      "category": "competition certifications",
+      "name": "第十九届iCAN大学生创新创业大赛 上海赛区一等奖 · 队长（2025）",
+      "img": "assets/competition_certifications/ican_shanghai_1st_2025.jpg"
+    },
+    {
+      "category": "competition certifications",
+      "name": "\"西门子杯\"中国智能制造挑战赛 华东一赛区一等奖 · 队长（2025）",
+      "img": "assets/competition_certifications/siemens_cup_east_china_1st_2025.png"
+    },
+    {
+      "category": "competition certifications",
+      "name": "\"挑战杯\"中国青年科技创新\"揭榜挂帅\"擂台赛 三等奖——智慧环卫国产系统无人清扫车关键技术攻关（学生赛道·团队位次2·初审通过）",
+      "img": "assets/competition_certifications/jiebang_guaishuai_national_3rd_2026.png"
+    },
+    {
+      "category": "competition certifications",
+      "name": "全国大学生节能减排社会实践与科技竞赛 全国二等奖——智能双足巡检拾取机器人（2025·队长）",
+      "img": "assets/competition_certifications/energy_saving_national_2nd_biped_2025.jpg"
+    },
+    {
+      "category": "competition certifications",
+      "name": "全国大学生节能减排社会实践与科技竞赛 全国二等奖——智冷绿运生鲜冷链箱 · 队员（2025）",
+      "img": "assets/competition_certifications/energy_saving_national_2nd_coldchain_2025.jpg"
+    },
+    {
+      "category": "competition certifications",
+      "name": "第二届上海市大学生节能减排竞赛 二等奖——智能双足巡检拾取机器人 · 队长（2025）",
+      "img": "assets/competition_certifications/energy_saving_shanghai_2nd_biped_2025.jpg"
+    },
+    {
+      "category": "competition certifications",
+      "name": "第二届上海市大学生节能减排竞赛 二等奖——智冷绿运生鲜冷链箱 · 队员（2025）",
+      "img": "assets/competition_certifications/energy_saving_shanghai_2nd_coldchain_2025.jpg"
+    },
+    {
+      "category": "competition certifications",
+      "name": "上海海洋大学节能减排校内选拔赛 三等奖——智冷绿运 · 队员（2025）",
+      "img": "assets/competition_certifications/energy_saving_campus_3rd_coldchain_2025.jpg"
+    },
+    {
+      "category": "competition certifications",
+      "name": "第十届\"汇创青春\"上海大学生文化创意作品展示活动 一等奖——学速递 · 队长（2025）",
+      "img": "assets/competition_certifications/huichuang_youth_shanghai_1st_2025.jpg"
+    },
+    {
+      "category": "competition certifications",
+      "name": "第十四届全国海洋航行器设计与制作大赛 长三角赛区三等奖——智巡探海ROV · 队长（2025）",
+      "img": "assets/competition_certifications/marine_vehicle_rov_delta_3rd_2025.jpg"
+    },
+    {
+      "category": "competition certifications",
+      "name": "第十五届全国大学生电子商务\"三创\"挑战赛 校级赛二等奖 · 队长（2025）",
+      "img": "assets/competition_certifications/sanchuang_campus_2nd_2025.jpeg"
+    },
+    {
+      "category": "competition certifications",
+      "name": "第十五届全国大学生电子商务\"三创\"挑战赛 校级赛最佳创意奖 · 队长（2025）",
+      "img": "assets/competition_certifications/sanchuang_campus_best_creativity_2025.jpeg"
+    },
+    {
+      "category": "competition certifications",
+      "name": "市级大学生创新训练计划结项证书——智能外卖双足机器人\"智送小侠\" · 队长（2026）",
+      "img": "assets/competition_certifications/dachuang_municipal_biped_delivery_2026.jpg"
+    },
+    {
+      "category": "competition certifications",
+      "name": "校级大学生创新训练计划结项证书——支持语音交互的全自动智能窗 · 队员（2026）",
+      "img": "assets/competition_certifications/dachuang_campus_smart_window_2026.jpg"
+    },
+    {
+      "category": "scholarship certificate",
+      "name": "上海海洋大学单项奖学金\"专业成就奖\"（2024-2025学年春季学期）",
+      "img": "assets/scholarship_certificate/scholarship_professional_achievement_2025.jpg"
+    },
+    {
+      "category": "scholarship certificate",
+      "name": "上海海洋大学单项奖学金\"发明创造奖\"（证书一，2024-2025学年春季学期）",
+      "img": "assets/scholarship_certificate/scholarship_invention_award_2025_1.jpg"
+    },
+    {
+      "category": "scholarship certificate",
+      "name": "上海海洋大学单项奖学金\"发明创造奖\"（证书二，2024-2025学年春季学期）",
+      "img": "assets/scholarship_certificate/scholarship_invention_award_2025_2.jpg"
+    },
+    {
+      "category": "scholarship certificate",
+      "name": "上海海洋大学单项奖学金\"发明创造奖\"（证书三，2024-2025学年春季学期）",
+      "img": "assets/scholarship_certificate/scholarship_invention_award_2025_3.jpg"
+    },
+    {
+      "category": "Language Test Report Form",
+      "name": "雅思成绩单（2026.09.13，总分6.0）",
+      "img": "assets/language_test_report_form/ielts_trf_2026_09_13.jpg"
+    },
+    {
+      "category": "Language Test Report Form",
+      "name": "雅思成绩单（2026.09.02，总分6.0）",
+      "img": "assets/language_test_report_form/ielts_trf_2026_09_02.jpg"
+    },
+    {
+      "category": "Language Test Report Form",
+      "name": "雅思成绩单（2026.07.29，总分6.0，阅读7.0）",
+      "img": "assets/language_test_report_form/ielts_trf_2026_07_29.jpg"
+    },
+    {
+      "category": "Language Test Report Form",
+      "name": "全国大学英语四级成绩报告单（2023.12，437分）",
+      "img": "assets/language_test_report_form/cet4_report_2023.jpg"
+    },
+    {
+      "category": "Volunteer and Student Activity Certificate",
+      "name": "雷锋日志愿服务志愿者证书（2026）",
+      "img": "assets/volunteer_and_student_activity_certificate/volunteer_leifeng_day_2026.jpg"
+    },
+    {
+      "category": "Volunteer and Student Activity Certificate",
+      "name": "社团文化节志愿活动志愿者证书（2026）",
+      "img": "assets/volunteer_and_student_activity_certificate/volunteer_club_culture_festival_2026.jpg"
+    },
+    {
+      "category": "Volunteer and Student Activity Certificate",
+      "name": "第五届\"蔚蓝创新\"大学生科创训练营优秀志愿者（2024）",
+      "img": "assets/volunteer_and_student_activity_certificate/volunteer_weilan_camp_2024.jpg"
+    },
+    {
+      "category": "Volunteer and Student Activity Certificate",
+      "name": "校运动会志愿服务证书（2023-2024学年）",
+      "img": "assets/volunteer_and_student_activity_certificate/volunteer_sports_meeting_2023.jpg"
+    },
+    {
+      "category": "Volunteer and Student Activity Certificate",
+      "name": "上海市无偿献血证（2024）",
+      "img": "assets/volunteer_and_student_activity_certificate/blood_donation_cert_2024.jpg"
+    },
+    {
+      "category": "Volunteer and Student Activity Certificate",
+      "name": "共青团工程学院委员会科创管理部干事聘书（2023-2024）",
+      "img": "assets/volunteer_and_student_activity_certificate/appointment_youth_league_st_dept_2023.jpg"
+    },
+    {
+      "category": "Volunteer and Student Activity Certificate",
+      "name": "工程学院学生骨干培训班结业证书（2023）",
+      "img": "assets/volunteer_and_student_activity_certificate/student_leader_training_2023.jpg"
+    },
+    {
+      "category": "letters of recommendation",
+      "name": "导师推荐信 — Prof. Tian（工程学院讲师，海洋机器人方向）",
+      "img": "assets/letters_of_recommendation/LOR_Xiong_Yang_Prof_Tian.jpg"
+    },
+    {
+      "category": "letters of recommendation",
+      "name": "导师推荐信 — Prof. Wu（工程中心实验室主任，科创竞赛指导）",
+      "img": "assets/letters_of_recommendation/LOR_Xiong_Yang_Prof_Wu.jpg"
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>熊阳 | 个人主页</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">我的主页</div>
+            <ul class="navbar-menu">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#about">关于我</a></li>
+                <li><a href="#projects">项目展示</a></li>
+                <li><a href="#certifications">荣誉证书</a></li>
+                <li><a href="#videos">视频动态</a></li>
+                <li><a href="#contact">联系方式</a></li>
+            </ul>
+            <div class="navbar-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首页横幅 -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title"><span id="heroText">Hello, 欢迎来到我的主页</span><span class="type-cursor">|</span></h1>
+            <h2>熊阳</h2>
+            <p>机器人工程（本科） | 上海海洋大学 | 广西柳州</p>
+            <a href="#projects" class="cta-button">查看我的项目</a>
+        </div>
+    </section>
+
+    <!-- 关于我 -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">关于我</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="assets/avatar.jpg" alt="熊阳" class="avatar">
+                </div>
+                <div class="about-text">
+                    <p>上海海洋大学（双一流）机器人工程专业2023级本科，大四在读，平均分82.03，主修移动机器人创新实训、机器人操作系统与仿真、电路原理、数字电子技术、模拟电子技术。研究方向为多智能体强化学习与具身视觉感知：已发表13篇SCI一/二区论文（第一作者发表于Journal of Marine Science and Engineering），在柳药集团与乾锦智能完成Agent算法研发与机器人视觉检测实习，曾获节能减排竞赛全国二等奖（2项）、iCAN上海赛区一等奖、西门子杯华东赛区一等奖等；雅思6.0（阅读7.0），蔚蓝创新社社长、班长。</p>
+                    <div class="skills">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">ROS</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">OpenCV</span>
+                        <span class="skill-tag">YOLO</span>
+                        <span class="skill-tag">SLAM</span>
+                        <span class="skill-tag">GAT / Transformer</span>
+                        <span class="skill-tag">Jetson</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目展示 -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">项目展示</h2>
+            <div class="projects-grid" id="projects-container">
+                <!-- 项目卡片将通过JS动态生成 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 荣誉证书（按简历逻辑：紧跟比赛经历之后） -->
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <h2 class="section-title">荣誉证书</h2>
+            <div class="certifications-layout">
+                <!-- 分类侧边栏 -->
+                <div class="certifications-sidebar">
+                    <div class="certifications-categories" id="certifications-categories">
+                        <!-- 分类按钮将通过JS动态生成 -->
+                    </div>
+                </div>
+                <!-- 证书展示区 -->
+                <div class="certifications-content">
+                    <div class="certifications-grid" id="certifications-grid">
+                        <!-- 证书卡片将通过JS动态生成 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 视频动态 -->
+    <section id="videos" class="videos">
+        <div class="container">
+            <h2 class="section-title">视频动态</h2>
+            <div class="videos-container" id="videos-container">
+                <!-- 视频将通过JS动态生成 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">联系方式</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>联系信息</h3>
+                    <p><strong>邮箱：</strong>andy799775362@163.com</p>
+                    <p><strong>电话：</strong>13978006936</p>
+                    <p><strong>籍贯：</strong>广西柳州</p>
+                </div>
+                <div class="contact-form">
+                    <h3>发送消息</h3>
+                    <form id="contact-form">
+                        <input type="text" placeholder="您的姓名" required>
+                        <input type="email" placeholder="您的邮箱" required>
+                        <textarea placeholder="留言内容" rows="5" required></textarea>
+                        <button type="submit">发送消息</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 我的个人主页. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 回到顶部按钮 -->
+    <button id="back-to-top" class="back-to-top">↑</button>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close">&times;</button>
+            <button class="lightbox-prev">&lt;</button>
+            <img id="lightbox-image" src="" alt="">
+            <button class="lightbox-next">&gt;</button>
+            <div class="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
