@@ -245,17 +245,10 @@
   "videos": [
     {
       "id": 1,
-      "title": "智能双足巡检拾取机器人演示",
-      "description": "\"智巡清道\"双足轮足机器人：YOLOv8识别 + SLAM导航 + 机械臂拾取，实机演示视频（待替换为真实B站链接）",
-      "url": "https://www.bilibili.com/",
-      "type": "bilibili"
-    },
-    {
-      "id": 2,
-      "title": "多USV协同对抗算法仿真",
-      "description": "Adv-TransAC时空元强化学习框架多无人艇对抗博弈仿真视频（待替换为真实B站链接）",
-      "url": "https://www.bilibili.com/",
-      "type": "bilibili"
+      "title": "双足机器人 · 3D 建模 360° 展示",
+      "description": "\"智巡清道\"双足轮足机器人三维建模全角度旋转展示",
+      "type": "local",
+      "src": "assets/videos/biped_model_rotate.mp4"
     }
   ],
   "certifications": [

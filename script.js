@@ -321,30 +321,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
         videosContainer.innerHTML = '';
         
-        // 视频数据（待替换为真实B站视频链接后即可正常嵌入播放）
+        // 视频数据（type: local = 本地视频文件；bilibili = B站嵌入，待替换为真实链接）
         const videos = [
             {
                 id: 1,
-                title: '智能双足巡检拾取机器人演示',
-                description: '"智巡清道"双足轮足机器人：YOLOv8识别 + SLAM导航 + 机械臂拾取，实机演示视频（待替换为真实B站链接）',
-                url: 'https://www.bilibili.com/video/BV1xx411c7mu',
-                type: 'bilibili'
-            },
-            {
-                id: 2,
-                title: '多USV协同对抗算法仿真',
-                description: 'Adv-TransAC时空元强化学习框架多无人艇对抗博弈仿真视频（待替换为真实B站链接）',
-                url: 'https://www.bilibili.com/video/BV1xx411c7mu',
-                type: 'bilibili'
+                title: '双足机器人 · 3D 建模 360° 展示',
+                description: '"智巡清道"双足轮足机器人三维建模全角度旋转展示',
+                type: 'local',
+                src: 'assets/videos/biped_model_rotate.mp4'
             }
         ];
-        
+
         videos.forEach(video => {
             const videoWrapper = document.createElement('div');
             videoWrapper.className = 'video-wrapper';
             
             let embedCode = '';
-            if (video.type === 'bilibili') {
+            if (video.type === 'local') {
+                embedCode = `<video class="video-player" src="${video.src}" controls preload="metadata" playsinline></video>`;
+            } else if (video.type === 'bilibili') {
                 // B站嵌入代码（autoplay=0 禁止自动播放出声）
                 const bvId = video.url.split('/').pop();
                 embedCode = `<iframe src="https://player.bilibili.com/player.html?bvid=${bvId}&autoplay=0" allowfullscreen></iframe>`;

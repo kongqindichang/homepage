@@ -786,7 +786,8 @@ body {
 }
 
 /* 播放器按 16:9 自适应容器宽度，避免黑边/压扁 */
-.video-wrapper iframe {
+.video-wrapper iframe,
+.video-wrapper video {
     width: 100%;
     aspect-ratio: 16 / 9;
     height: auto;
