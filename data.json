@@ -74,8 +74,8 @@
         },
         {
           "img": "assets/research_paper_certification/paper_jmse_multi_usv_meta_rl_2025.png",
-          "caption": "出版证书 · 第一作者",
-          "name": "Spatiotemporal Meta-RL for Multi-USV Adversarial Games（JMSE 2025，第一作者）出版证书",
+          "caption": "论文发表证书 · 第一作者",
+          "name": "Spatiotemporal Meta-RL for Multi-USV Adversarial Games（JMSE 2025，第一作者）论文发表证书",
           "span": 2
         }
       ],
@@ -121,8 +121,8 @@
         },
         {
           "img": "assets/research_paper_certification/paper_photonics_orchard_yolo_2026.jpg",
-          "caption": "出版证书",
-          "name": "Orchard-YOLO（Photonics 2026）出版证书",
+          "caption": "论文发表证书",
+          "name": "Orchard-YOLO（Photonics 2026）论文发表证书",
           "span": 2
         }
       ],
@@ -167,8 +167,8 @@
         },
         {
           "img": "assets/research_paper_certification/paper_sensors_coral_yolo_2025.jpg",
-          "caption": "出版证书",
-          "name": "Coral-YOLO（Sensors 2025）出版证书"
+          "caption": "论文发表证书",
+          "name": "Coral-YOLO（Sensors 2025）论文发表证书"
         }
       ],
       "reverse": false,

@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     { img: 'assets/research_paper_figs/jmse_advtransac_framework.png', caption: 'Figure 2 · 研究方法总框架', name: '论文配图 Figure 2 · Adv-TransAC 研究方法总框架（JMSE 2025，第一作者）', span: 2 },
                     { img: 'assets/research_paper_figs/jmse_meta_learning_architecture.png', caption: 'Figure 3 · 对抗元学习架构', name: '论文配图 Figure 3 · 对抗元学习架构：对手编码器 + GNN-Transformer 基座策略 + 元调节器与课程学习调度' },
                     { img: 'assets/research_paper_figs/jmse_multimodal_fusion_pipeline.png', caption: 'Figure 4 · 动态多模态融合管线', name: '论文配图 Figure 4 · 动态多模态融合管线：雷达点云 / 占据栅格 / 威胁热图时空对齐与融合' },
-                    { img: 'assets/research_paper_certification/paper_jmse_multi_usv_meta_rl_2025.png', caption: '出版证书 · 第一作者', name: 'Spatiotemporal Meta-RL for Multi-USV Adversarial Games（JMSE 2025，第一作者）出版证书', span: 2 }
+                    { img: 'assets/research_paper_certification/paper_jmse_multi_usv_meta_rl_2025.png', caption: '论文发表证书 · 第一作者', name: 'Spatiotemporal Meta-RL for Multi-USV Adversarial Games（JMSE 2025，第一作者）论文发表证书', span: 2 }
                 ],
                 link: '#',
                 tags: ['第一作者', '多智能体强化学习', 'GAT', 'Transformer', 'CTDE', 'PyTorch']
@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     { img: 'assets/research_paper_figs/orchardyolo_architecture.png', caption: 'Figure 2 · Orchard-YOLO 整体架构', name: '论文配图 Figure 2 · Orchard-YOLO 整体架构：Ghost 卷积骨干 + CA 增强特征融合 + P2 高分辨率检测头（Photonics 2026）', span: 2 },
                     { img: 'assets/research_paper_figs/orchardyolo_occlusion_results.jpg', caption: 'Figure 8 · 遮挡递增检测成果', name: '论文配图 Figure 8 · 清洁 / 30% / 70% 遮挡下检测成果对比：重度遮挡下 YOLOv13 仍保持更多果实定位' },
                     { img: 'assets/research_paper_figs/orchardyolo_robustness.png', caption: 'Figure 11 · 鲁棒性得分对比', name: '论文配图 Figure 11 · 遮挡/光照/尺度/复合应力下的鲁棒性得分对比（YOLOv13 相对 YOLOv8 全面占优）' },
-                    { img: 'assets/research_paper_certification/paper_photonics_orchard_yolo_2026.jpg', caption: '出版证书', name: 'Orchard-YOLO（Photonics 2026）出版证书', span: 2 }
+                    { img: 'assets/research_paper_certification/paper_photonics_orchard_yolo_2026.jpg', caption: '论文发表证书', name: 'Orchard-YOLO（Photonics 2026）论文发表证书', span: 2 }
                 ],
                 link: '#',
                 tags: ['YOLO', '轻量化', 'Jetson', '边缘部署', 'Photonics']
@@ -227,7 +227,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     { img: 'assets/research_paper_figs/coralyolo_training_dynamics.png', caption: 'Figure 7 · 训练过程', name: '论文配图 Figure 7 · CR-Mix 验证集训练过程：Coral-YOLO 的 mAP 收敛速度与精度显著高于基线' },
                     { img: 'assets/research_paper_figs/coralyolo_detection_compare.jpg', caption: 'Figure 9 · 检测与预测成果', name: '论文配图 Figure 9 · 真实珊瑚礁场景检测与预测成果对比（Coral-YOLO vs 基线）', span: 2 },
                     { img: 'assets/research_paper_figs/coralyolo_heatmap.jpg', caption: 'Figure 10 · Grad-CAM 热力图', name: '论文配图 Figure 10 · Grad-CAM 诊断：Coral-YOLO 的注意力更聚焦珊瑚目标区域', span: 2 },
-                    { img: 'assets/research_paper_certification/paper_sensors_coral_yolo_2025.jpg', caption: '出版证书', name: 'Coral-YOLO（Sensors 2025）出版证书' }
+                    { img: 'assets/research_paper_certification/paper_sensors_coral_yolo_2025.jpg', caption: '论文发表证书', name: 'Coral-YOLO（Sensors 2025）论文发表证书' }
                 ],
                 link: '#',
                 tags: ['YOLO', '目标检测', '时序预测', '海洋感知', 'Sensors']
