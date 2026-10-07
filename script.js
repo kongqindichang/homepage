@@ -85,43 +85,60 @@ document.addEventListener('DOMContentLoaded', function() {
         // （夸克/UC 等内核会把播放中的 <video> 抽成悬浮窗，canvas 不受影响）
         const bpCover = wrap.querySelector(".bp-video-cover");
         if (bpCover) {
+            // 播放器只创建一次并常驻：二次打开秒出画面，无需重新加载
             bpCover.addEventListener("click", () => {
-                // 夸克/UC 内核会把播放中的视频强行抽成悬浮窗且无关闭键——
-                // 这类浏览器改为新页面打开视频文件，使用其自带的视频播放页
-                if (/quark|ucbrowser|ucweb|uclist/i.test(navigator.userAgent)) {
-                    window.open("assets/videos/biped_finals_demo.mp4", "_blank");
+                if (wrap.dataset.playerBuilt) {
+                    const pv = wrap.querySelector(".bp-video-player video");
+                    if (pv) pv.play().catch(() => {});
                     return;
                 }
+                wrap.dataset.playerBuilt = "1";
                 const holder = document.createElement("div");
                 holder.className = "bp-video-player";
-                holder.innerHTML = '<video playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" src="assets/videos/biped_finals_demo.mp4"></video><canvas></canvas><span class="bp-video-state"></span>';
+                holder.innerHTML =
+                    '<video playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="auto" src="assets/videos/biped_finals_demo.mp4"></video>' +
+                    '<canvas></canvas>' +
+                    '<div class="bp-video-loading"><span class="bp-video-spin"></span>加载中…</div>' +
+                    '<div class="bp-video-ctrls">' +
+                    '<button class="bp-ctrl-play" aria-label="播放/暂停"></button>' +
+                    '<input class="bp-ctrl-seek" type="range" min="0" max="1000" value="0" step="1" aria-label="播放进度">' +
+                    '<span class="bp-ctrl-time">0:00 / 0:00</span>' +
+                    '</div>';
                 bpCover.replaceWith(holder);
                 const v = holder.querySelector("video");
                 const cv = holder.querySelector("canvas");
-                const state = holder.querySelector(".bp-video-state");
                 const cx = cv.getContext("2d");
+                const loading = holder.querySelector(".bp-video-loading");
+                const playBtn = holder.querySelector(".bp-ctrl-play");
+                const seek = holder.querySelector(".bp-ctrl-seek");
+                const timeLbl = holder.querySelector(".bp-ctrl-time");
+                let seeking = false;
 
-                const sync = () => {
-                    cv.width = v.videoWidth || 1280;
-                    cv.height = v.videoHeight || 720;
-                    if (v.videoWidth) cx.drawImage(v, 0, 0, cv.width, cv.height);
-                    state.textContent = v.paused ? "▶" : "";
-                };
-                v.addEventListener("loadedmetadata", sync);
-                v.addEventListener("seeked", sync);
-                v.addEventListener("play", () => { state.textContent = ""; loop(); });
-                v.addEventListener("pause", () => { sync(); state.textContent = "▶"; });
-
-                let rafId = null;
+                const fmt = t => { t = Math.max(0, Math.floor(t || 0)); return Math.floor(t / 60) + ":" + String(t % 60).padStart(2, "0"); };
+                const draw = () => { if (v.videoWidth) { if (cv.width !== v.videoWidth) { cv.width = v.videoWidth; cv.height = v.videoHeight; } cx.drawImage(v, 0, 0, cv.width, cv.height); } };
+                const updTime = () => { timeLbl.textContent = fmt(v.currentTime) + " / " + fmt(v.duration || 0); };
+                const setPlayIcon = () => { playBtn.textContent = v.paused ? "▶" : "⏸"; };
                 const loop = () => {
-                    if (v.paused || v.ended || !holder.isConnected) { rafId = null; return; }
-                    cx.drawImage(v, 0, 0, cv.width, cv.height);
-                    rafId = requestAnimationFrame(loop);
+                    if (v.paused || v.ended || !holder.isConnected) return;
+                    draw();
+                    requestAnimationFrame(loop);
                 };
 
-                cv.addEventListener("click", () => v.paused ? v.play().catch(() => {}) : v.pause());
+                v.addEventListener("loadedmetadata", () => { draw(); updTime(); });
+                v.addEventListener("canplay", () => loading.classList.add("done"));
+                v.addEventListener("waiting", () => loading.classList.remove("done"));
+                v.addEventListener("playing", () => loading.classList.add("done"));
+                v.addEventListener("timeupdate", () => { if (!seeking) { seek.value = Math.round(v.currentTime / (v.duration || 1) * 1000); } updTime(); });
+                v.addEventListener("play", () => { setPlayIcon(); loop(); });
+                v.addEventListener("pause", () => { setPlayIcon(); draw(); });
+                v.addEventListener("ended", () => { setPlayIcon(); });
 
-                v.play().catch(() => { sync(); state.textContent = "▶"; });
+                playBtn.addEventListener("click", () => v.paused ? v.play().catch(() => {}) : v.pause());
+                seek.addEventListener("input", () => { seeking = true; v.currentTime = seek.value / 1000 * (v.duration || 0); draw(); updTime(); });
+                seek.addEventListener("change", () => { seeking = false; });
+
+                loading.classList.remove("done");
+                v.play().then(() => loop()).catch(() => { loading.classList.add("done"); draw(); });
             });
         }
 
@@ -475,6 +492,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function filterCertificates(category, certifications, activeBtn) {
         currentCategory = category;
         showingEnglish = false;
+        // 切换分类后保持滚动位置，不发生跳转
+        const keepY = window.scrollY;
         // 更新按钮状态
         document.querySelectorAll('.category-btn').forEach(btn => {
             btn.classList.remove('active');
@@ -482,6 +501,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (activeBtn) activeBtn.classList.add('active');
 
         renderCertGrid(category, certifications);
+        requestAnimationFrame(() => window.scrollTo({ top: keepY, behavior: "instant" }));
     }
 
     function renderCertGrid(category, certifications) {

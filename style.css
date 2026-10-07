@@ -667,10 +667,98 @@ body {
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
-    height: auto;
     background: #000;
     border-radius: 12px;
     overflow: hidden;
+}
+
+.bp-video .bp-video-player video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #000;
+}
+
+.bp-video .bp-video-player canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.bp-video .bp-video-loading {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: rgba(2, 6, 23, 0.72);
+    color: #e2e8f0;
+    font-size: 0.9rem;
+    transition: opacity 0.3s ease;
+}
+
+.bp-video .bp-video-loading.done {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.bp-video .bp-video-spin {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 3px solid rgba(96, 165, 250, 0.3);
+    border-top-color: #60a5fa;
+    animation: bpvideospin 0.9s linear infinite;
+}
+
+@keyframes bpvideospin {
+    to { transform: rotate(360deg); }
+}
+
+.bp-video .bp-video-ctrls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.bp-ctrl-play {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(96, 165, 250, 0.5);
+    background: rgba(37, 99, 235, 0.16);
+    color: #bfdbfe;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.25s ease;
+}
+
+.bp-ctrl-play:hover {
+    background: rgba(37, 99, 235, 0.32);
+}
+
+.bp-ctrl-seek {
+    flex: 1;
+    min-width: 0;
+    accent-color: #60a5fa;
+    cursor: pointer;
+}
+
+.bp-ctrl-time {
+    flex-shrink: 0;
+    min-width: 92px;
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    font-variant-numeric: tabular-nums;
 }
 
 .bp-video .bp-video-player video {
@@ -1362,9 +1450,7 @@ body {
         min-width: 0;
     }
 
-    .certifications-sidebar {
-        order: 2;
-    }
+
 
     .certifications-content {
         order: 1;
