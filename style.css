@@ -581,6 +581,30 @@ body {
     .bp-hero { animation: none; transform: rotate(-2deg); }
 }
 
+
+/* 实习卡片：查看英文版证明按钮（统一样式） */
+.project-en-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 1.1rem;
+    padding: 8px 18px;
+    background: rgba(37, 99, 235, 0.14);
+    color: #93c5fd;
+    border: 1px solid rgba(96, 165, 250, 0.45);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.project-en-btn:hover {
+    background: rgba(37, 99, 235, 0.28);
+    border-color: #60a5fa;
+    color: #bfdbfe;
+}
+
 /* 比赛经历面板：原型机运行视频（标语下方、通栏展示） */
 .bp-video {
     margin: 0 0 1.8rem;
