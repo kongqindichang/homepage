@@ -81,21 +81,47 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
 
-        // 原型机运行画面：点击封面 → 原地生成同层播放器（避免手机浏览器悬浮层）
+        // 原型机运行画面：点击封面 → Canvas 画布播放
+        // （夸克/UC 等内核会把播放中的 <video> 抽成悬浮窗，canvas 不受影响）
         const bpCover = wrap.querySelector(".bp-video-cover");
         if (bpCover) {
             bpCover.addEventListener("click", () => {
-                const v = document.createElement("video");
-                v.src = "assets/videos/biped_finals_demo.mp4";
-                v.controls = true;
-                v.autoplay = true;
-                v.playsInline = true;
-                v.setAttribute("webkit-playsinline", "");
-                v.setAttribute("x5-playsinline", "");
-                v.setAttribute("x5-video-player-type", "h5-page");
-                v.className = "bp-video-player";
-                bpCover.replaceWith(v);
-                v.play().catch(() => {});
+                // 夸克/UC 内核会把播放中的视频强行抽成悬浮窗且无关闭键——
+                // 这类浏览器改为新页面打开视频文件，使用其自带的视频播放页
+                if (/quark|ucbrowser|ucweb|uclist/i.test(navigator.userAgent)) {
+                    window.open("assets/videos/biped_finals_demo.mp4", "_blank");
+                    return;
+                }
+                const holder = document.createElement("div");
+                holder.className = "bp-video-player";
+                holder.innerHTML = '<video playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" src="assets/videos/biped_finals_demo.mp4"></video><canvas></canvas><span class="bp-video-state"></span>';
+                bpCover.replaceWith(holder);
+                const v = holder.querySelector("video");
+                const cv = holder.querySelector("canvas");
+                const state = holder.querySelector(".bp-video-state");
+                const cx = cv.getContext("2d");
+
+                const sync = () => {
+                    cv.width = v.videoWidth || 1280;
+                    cv.height = v.videoHeight || 720;
+                    if (v.videoWidth) cx.drawImage(v, 0, 0, cv.width, cv.height);
+                    state.textContent = v.paused ? "▶" : "";
+                };
+                v.addEventListener("loadedmetadata", sync);
+                v.addEventListener("seeked", sync);
+                v.addEventListener("play", () => { state.textContent = ""; loop(); });
+                v.addEventListener("pause", () => { sync(); state.textContent = "▶"; });
+
+                let rafId = null;
+                const loop = () => {
+                    if (v.paused || v.ended || !holder.isConnected) { rafId = null; return; }
+                    cx.drawImage(v, 0, 0, cv.width, cv.height);
+                    rafId = requestAnimationFrame(loop);
+                };
+
+                cv.addEventListener("click", () => v.paused ? v.play().catch(() => {}) : v.pause());
+
+                v.play().catch(() => { sync(); state.textContent = "▶"; });
             });
         }
 
