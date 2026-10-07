@@ -329,6 +329,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 description: '"智巡清道"双足轮足机器人三维建模全角度旋转展示',
                 type: 'local',
                 src: 'assets/videos/biped_model_rotate.mp4'
+            },
+            {
+                id: 2,
+                title: '总决赛实机演示 · 自主避障与巡检',
+                description: '"智巡清道 节能先锋"全国总决赛提交演示：自主避障（室内）、草地越野与巡检拾取全流程',
+                type: 'local',
+                src: 'assets/videos/biped_finals_demo.mp4'
             }
         ];
 
