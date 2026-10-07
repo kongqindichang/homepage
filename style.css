@@ -1357,6 +1357,11 @@ body {
         grid-template-columns: 1fr;
     }
 
+    /* 关键：允许网格子项收缩到视口宽，否则分类按钮行的最小宽度会把整个证书区撑到桌面宽度 */
+    .certifications-layout > * {
+        min-width: 0;
+    }
+
     .certifications-sidebar {
         order: 2;
     }
