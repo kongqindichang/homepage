@@ -267,13 +267,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                         <div class="pp-mosaic">
                             ${figs.map((g, i) => `<figure class="pp-item${g.span === 2 ? ' span2' : ''}" data-i="${gallery.indexOf(g)}">
-                                <div class="pgi-frame"><img src="${g.img}" alt="${g.caption}" loading="lazy"></div>
+                                <div class="pgi-frame"><img src="${g.img}" alt="${g.caption}"></div>
                                 <figcaption>${g.caption}</figcaption>
                             </figure>`).join('')}
                         </div>
                     </div>
                     ${certItem ? `<figure class="pp-item cert pp-cert" data-i="${gallery.indexOf(certItem)}">
-                        <div class="pgi-frame"><img src="${certItem.img}" alt="${certItem.caption}" loading="lazy"></div>
+                        <div class="pgi-frame"><img src="${certItem.img}" alt="${certItem.caption}"></div>
                         <figcaption>${certItem.caption}</figcaption>
                     </figure>` : ''}
                 `;
@@ -469,7 +469,7 @@ document.addEventListener('DOMContentLoaded', function() {
             certCard.className = 'certificate-card';
             certCard.innerHTML = `
                 <div class="certificate-image">
-                    <img src="${cert.img}" alt="${cert.name}" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML='<span>📄</span>'">
+                    <img src="${cert.img}" alt="${cert.name}" onerror="this.style.display='none'; this.parentElement.innerHTML='<span>📄</span>'">
                 </div>
                 <div class="certificate-name">${cert.name}</div>
             `;
