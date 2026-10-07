@@ -156,34 +156,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 id: 4,
                 group: '论文发表',
                 reverse: true,
-                title: '论文一 · Orchard-YOLO：复杂光学环境下的果园果实检测',
-                venue: 'Photonics · SCI 收录 · JCR Q2 · 第四作者',
+                title: 'Orchard-YOLO：复杂光学环境下的果园果实检测',
+                venue: 'Photonics · SCI 收录 · JCR Q2',
                 description: '论文正式题目（以期刊证书为准）《Orchard-YOLO: A Robust Deep Learning Framework for Fruit Detection under Complex Optical and Environmental Degradation》。参与轻量化检测网络研发与边缘部署：Ghost 卷积骨干 + CA 增强特征融合 + P2 高分辨率检测头，实现遮挡与光照鲁棒识别及 Jetson 边缘设备实时推理。',
                 gallery: [
                     { img: 'assets/research_paper_figs/orchardyolo_architecture.png', caption: 'Figure 2 · Orchard-YOLO 整体架构', name: '论文配图 Figure 2 · Orchard-YOLO 整体架构：Ghost 卷积骨干 + CA 增强特征融合 + P2 高分辨率检测头（Photonics 2026）', span: 2 },
                     { img: 'assets/research_paper_figs/orchardyolo_occlusion_results.jpg', caption: 'Figure 8 · 遮挡递增检测成果', name: '论文配图 Figure 8 · 清洁 / 30% / 70% 遮挡下检测成果对比：重度遮挡下 YOLOv13 仍保持更多果实定位' },
                     { img: 'assets/research_paper_figs/orchardyolo_robustness.png', caption: 'Figure 11 · 鲁棒性得分对比', name: '论文配图 Figure 11 · 遮挡/光照/尺度/复合应力下的鲁棒性得分对比（YOLOv13 相对 YOLOv8 全面占优）' },
-                    { img: 'assets/research_paper_certification/paper_photonics_orchard_yolo_2026.jpg', caption: '出版证书 · 第四作者', name: 'Orchard-YOLO（Photonics 2026，第四作者）出版证书', span: 2 }
+                    { img: 'assets/research_paper_certification/paper_photonics_orchard_yolo_2026.jpg', caption: '出版证书', name: 'Orchard-YOLO（Photonics 2026）出版证书', span: 2 }
                 ],
                 link: '#',
-                tags: ['第四作者', 'YOLO', '轻量化', 'Jetson', '边缘部署', 'Photonics']
+                tags: ['YOLO', '轻量化', 'Jetson', '边缘部署', 'Photonics']
             },
             {
                 id: 5,
                 group: '论文发表',
                 reverse: false,
-                title: '论文二 · Coral-YOLO：面向珊瑚礁海洋监测的智能光学感知',
-                venue: 'Sensors · SCI 收录 · JCR Q2 · 第五作者',
+                title: 'Coral-YOLO：面向珊瑚礁海洋监测的智能光学感知',
+                venue: 'Sensors · SCI 收录 · JCR Q2',
                 description: '参与智能光学视觉感知框架中检测与预测部分的实现：局部-全局注意力（LGA）单元与时序预测模块，提升小目标、遮挡与跨域场景下的检测稳定性及时序预测能力，用于高保真海洋栖息地监测与预报。',
                 gallery: [
                     { img: 'assets/research_paper_figs/coralyolo_architecture.png', caption: 'Figure 1 · Coral-YOLO 整体架构', name: '论文配图 Figure 1 · Coral-YOLO 整体架构：时序图像输入、多项创新的检测框架（Sensors 2025）' },
                     { img: 'assets/research_paper_figs/coralyolo_training_dynamics.png', caption: 'Figure 7 · 训练过程', name: '论文配图 Figure 7 · CR-Mix 验证集训练过程：Coral-YOLO 的 mAP 收敛速度与精度显著高于基线' },
                     { img: 'assets/research_paper_figs/coralyolo_detection_compare.jpg', caption: 'Figure 9 · 检测与预测成果', name: '论文配图 Figure 9 · 真实珊瑚礁场景检测与预测成果对比（Coral-YOLO vs 基线）', span: 2 },
                     { img: 'assets/research_paper_figs/coralyolo_heatmap.jpg', caption: 'Figure 10 · Grad-CAM 热力图', name: '论文配图 Figure 10 · Grad-CAM 诊断：Coral-YOLO 的注意力更聚焦珊瑚目标区域', span: 2 },
-                    { img: 'assets/research_paper_certification/paper_sensors_coral_yolo_2025.jpg', caption: '出版证书 · 第五作者', name: 'Coral-YOLO（Sensors 2025，第五作者）出版证书' }
+                    { img: 'assets/research_paper_certification/paper_sensors_coral_yolo_2025.jpg', caption: '出版证书', name: 'Coral-YOLO（Sensors 2025）出版证书' }
                 ],
                 link: '#',
-                tags: ['第五作者', 'YOLO', '目标检测', '时序预测', '海洋感知', 'Sensors']
+                tags: ['YOLO', '目标检测', '时序预测', '海洋感知', 'Sensors']
             },
             {
                 id: 6,
@@ -350,10 +350,10 @@ document.addEventListener('DOMContentLoaded', function() {
             { category: 'letters of recommendation', name: '导师推荐信 — Prof. Wu（工程中心实验室主任，科创竞赛指导）', img: 'assets/letters_of_recommendation/LOR_Xiong_Yang_Prof_Wu.jpg' },
             { category: 'patent', name: '发明专利申请公布 CN 122664263 A《一种双体船载投料装置》（上海海洋大学，2026）', img: 'assets/patent/patent_cn122664263a_catamaran_feeder.jpg' },
             { category: 'research paper certification', name: 'Spatiotemporal Meta-RL for Multi-USV Adversarial Games（JMSE 2025，第一作者）', img: 'assets/research_paper_certification/paper_jmse_multi_usv_meta_rl_2025.png' },
-            { category: 'research paper certification', name: 'Orchard-YOLO（Photonics 2026，第四作者）', img: 'assets/research_paper_certification/paper_photonics_orchard_yolo_2026.jpg' },
+            { category: 'research paper certification', name: 'Orchard-YOLO（Photonics 2026）', img: 'assets/research_paper_certification/paper_photonics_orchard_yolo_2026.jpg' },
             { category: 'research paper certification', name: 'Evolving Collective Intelligence for Unmanned Marine Vehicle Swarms（JMSE 2026）', img: 'assets/research_paper_certification/paper_jmse_federated_meta_learning_2026.jpg' },
             { category: 'research paper certification', name: 'Data-Driven Multi-Scale Channel-Aligned Transformer for Low-Carbon Vessel Operations（JMSE 2025）', img: 'assets/research_paper_certification/paper_jmse_low_carbon_vessel_2025.png' },
-            { category: 'research paper certification', name: 'Coral-YOLO（Sensors 2025，第五作者）', img: 'assets/research_paper_certification/paper_sensors_coral_yolo_2025.jpg' },
+            { category: 'research paper certification', name: 'Coral-YOLO（Sensors 2025）', img: 'assets/research_paper_certification/paper_sensors_coral_yolo_2025.jpg' },
             { category: 'research paper certification', name: 'FEGW-YOLO Multi-Crop Detection on Edge Devices（Sensors 2026）', img: 'assets/research_paper_certification/paper_sensors_fegw_yolo_2026.jpg' },
             { category: 'research paper certification', name: 'Graph-Gated Relational Reasoning for Multi-Robot Systems（Sensors 2025）', img: 'assets/research_paper_certification/paper_sensors_graph_gated_multi_robot_2025.jpg' },
             { category: 'research paper certification', name: 'Trustworthy AI-IoT: The IMTPS Framework（Sensors 2026）', img: 'assets/research_paper_certification/paper_sensors_trustworthy_ai_iot_2026.jpg' },
