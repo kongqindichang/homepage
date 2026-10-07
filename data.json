@@ -242,22 +242,7 @@
       "content": "我注重把算法落到真实系统上：在乾锦智能装备参与涂胶/焊点视觉检测系统研发并部署于上汽通用五菱自动化产线；在广西柳药集团（A股上市603368）从事智能决策与Agent算法研发。竞赛方面，作为队长带队获节能减排竞赛全国二等奖（2项）、挑战杯全国三等奖、iCAN上海赛区一等奖、西门子杯华东赛区一等奖、汇创青春上海市一等奖等。未来我希望在具身智能方向继续深造，探索多智能体协同与具身视觉的融合应用。"
     }
   ],
-  "videos": [
-    {
-      "id": 1,
-      "title": "双足机器人 · 3D 建模 360° 展示",
-      "description": "\"智巡清道\"双足轮足机器人三维建模全角度旋转展示",
-      "type": "local",
-      "src": "assets/videos/biped_model_rotate.mp4"
-    },
-    {
-      "id": 2,
-      "title": "总决赛实机演示 · 自主避障与巡检",
-      "description": "\"智巡清道 节能先锋\"全国总决赛提交演示：自主避障（室内）、草地越野与巡检拾取全流程",
-      "type": "local",
-      "src": "assets/videos/biped_finals_demo.mp4"
-    }
-  ],
+  "videos": [],
   "certifications": [
     {
       "category": "research paper certification",

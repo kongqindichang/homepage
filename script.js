@@ -44,6 +44,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h3 class="bp-title">${project.title}</h3>
                 <p class="bp-tagline">有眼、有手、有脚、有脑 —— 面向园区巡检拾取的具身智能双足轮足机器人</p>
             </div>
+            <figure class="bp-video">
+                <video src="assets/videos/biped_finals_demo.mp4" controls preload="metadata" playsinline poster="assets/videos/biped_finals_demo_poster.jpg"></video>
+                <figcaption>原型机运行画面</figcaption>
+            </figure>
             <div class="bp-body">
                 <div class="bp-text">
                     <p>担任<b>队长</b>（申报书第一申报人），主导总体方案与系统集成。自研 YOLOv8 改进模型经两年迭代，四大类垃圾综合识别率从 23% 提升至 85%，支持 200+ 类校园垃圾与障碍物识别；融合 2D/3D 激光雷达、IMU、GPS 与视觉的多传感器 SLAM（EKF + G2O + 回环检测），2D 栅格与 3D 稠密点云建图；A* 全局规划 + DWA 动态避障；六舵机机械臂配合双目相机精准夹取；四连杆轮足在草地、碎石等非结构化地形稳定行走；Jetson Orin Nano + STM32 上下位机架构。基于本项目斩获<b>“挑战杯”揭榜挂帅擂台赛全国三等奖、全国节能减排竞赛二等奖、iCAN 上海赛区一等奖、西门子杯智能制造挑战赛华东赛区一等奖、汇创青春上海市一等奖</b>等多项荣誉。</p>
@@ -57,10 +61,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
                 <div class="bp-stage">
-                    <figure class="bp-hero">
-                        <img class="bp-hero-video" src="assets/project_biped/biped_model_rotate.webp" alt="机器人设计建模 360° 旋转展示" loading="lazy">
-                        <figcaption>设计建模 · 360° 旋转展示</figcaption>
-                    </figure>
                     <div class="bp-photos">
                         <figure class="bp-photo bp-p1"><img src="assets/project_biped/biped_real_front_studio.jpg" alt="原型机正视实拍"><figcaption>原型机 · 正视实拍</figcaption></figure>
                         <figure class="bp-photo bp-p2"><img src="assets/project_biped/biped_real_arm_photo.jpg" alt="原型机机械臂展开实拍"><figcaption>原型机 · 机械臂展开实拍</figcaption></figure>
@@ -311,59 +311,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.stopPropagation();
                 openLightbox(project.enCert.img, project.enCert.name, 0, [project.enCert]);
             });
-        });
-    }
-
-    // 渲染视频
-    function renderVideos() {
-        const videosContainer = document.getElementById('videos-container');
-        if (!videosContainer) return;
-
-        videosContainer.innerHTML = '';
-        
-        // 视频数据（type: local = 本地视频文件；bilibili = B站嵌入，待替换为真实链接）
-        const videos = [
-            {
-                id: 1,
-                title: '双足机器人 · 3D 建模 360° 展示',
-                description: '"智巡清道"双足轮足机器人三维建模全角度旋转展示',
-                type: 'local',
-                src: 'assets/videos/biped_model_rotate.mp4'
-            },
-            {
-                id: 2,
-                title: '总决赛实机演示 · 自主避障与巡检',
-                description: '"智巡清道 节能先锋"全国总决赛提交演示：自主避障（室内）、草地越野与巡检拾取全流程',
-                type: 'local',
-                src: 'assets/videos/biped_finals_demo.mp4'
-            }
-        ];
-
-        videos.forEach(video => {
-            const videoWrapper = document.createElement('div');
-            videoWrapper.className = 'video-wrapper';
-            
-            let embedCode = '';
-            if (video.type === 'local') {
-                embedCode = `<video class="video-player" src="${video.src}" controls preload="metadata" playsinline></video>`;
-            } else if (video.type === 'bilibili') {
-                // B站嵌入代码（autoplay=0 禁止自动播放出声）
-                const bvId = video.url.split('/').pop();
-                embedCode = `<iframe src="https://player.bilibili.com/player.html?bvid=${bvId}&autoplay=0" allowfullscreen></iframe>`;
-            } else if (video.type === 'youtube') {
-                // YouTube嵌入代码
-                const videoId = video.url.split('v=').pop().split('&')[0];
-                embedCode = `<iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe>`;
-            }
-            
-            videoWrapper.innerHTML = `
-                ${embedCode}
-                <div class="video-content">
-                    <h3 class="video-title">${video.title}</h3>
-                    <p class="video-description">${video.description}</p>
-                </div>
-            `;
-            videosContainer.appendChild(videoWrapper);
         });
     }
 
@@ -760,7 +707,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 初始化页面
     renderProjects();
-    renderVideos();
     renderCertifications();
     initHero();
 
