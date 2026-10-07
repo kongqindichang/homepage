@@ -64,6 +64,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
                 <div class="bp-stage">
+                    <figure class="bp-hero">
+                        <canvas class="bp-360cv" width="520" height="441"></canvas>
+                        <span class="bp-360-tip">↔ 拖拽 360° 旋转</span>
+                        <figcaption>设计建模 · 拖拽 360° 交互展示</figcaption>
+                    </figure>
                     <div class="bp-photos">
                         <figure class="bp-photo bp-p1"><img src="assets/project_biped/biped_real_front_studio.jpg" alt="原型机正视实拍"><figcaption>原型机 · 正视实拍</figcaption></figure>
                         <figure class="bp-photo bp-p2"><img src="assets/project_biped/biped_real_arm_photo.jpg" alt="原型机机械臂展开实拍"><figcaption>原型机 · 机械臂展开实拍</figcaption></figure>
@@ -149,6 +154,43 @@ document.addEventListener('DOMContentLoaded', function() {
                 openLightbox(certs[i].img, certs[i].name, i, certs);
             });
         });
+
+        // 360° 可拖拽旋转展示：82 帧序列，自动旋转 + 拖拽 scrub
+        const cv360 = wrap.querySelector(".bp-360cv");
+        if (cv360) {
+            const cx360 = cv360.getContext("2d");
+            const N360 = 82;
+            const frames360 = new Array(N360).fill(null);
+            let loaded360 = 0, cur360 = 0, auto360 = null, dragX360 = null, acc360 = 0, idleT360 = null;
+            const show360 = i => {
+                const im = frames360[i];
+                if (im && im.complete && im.naturalWidth) {
+                    cx360.clearRect(0, 0, cv360.width, cv360.height);
+                    cx360.drawImage(im, 0, 0, cv360.width, cv360.height);
+                }
+            };
+            const step360 = d => { cur360 = (cur360 + d + N360) % N360; show360(cur360); };
+            const startAuto360 = () => { stopAuto360(); if (loaded360 < N360) return; auto360 = setInterval(() => step360(1), 130); };
+            const stopAuto360 = () => { if (auto360) { clearInterval(auto360); auto360 = null; } };
+            for (let i = 0; i < N360; i++) {
+                const im = new Image();
+                im.onload = () => { if (++loaded360 === N360) { show360(cur360); startAuto360(); } };
+                im.src = "assets/project_biped/rotate360/f" + String(i + 1).padStart(3, "0") + ".webp";
+                frames360[i] = im;
+            }
+            cv360.style.touchAction = "pan-y";
+            cv360.addEventListener("pointerdown", e => { dragX360 = e.clientX; acc360 = 0; stopAuto360(); try { cv360.setPointerCapture(e.pointerId); } catch (err) {} });
+            cv360.addEventListener("pointermove", e => {
+                if (dragX360 === null) return;
+                acc360 += e.clientX - dragX360; dragX360 = e.clientX;
+                const stepPx = Math.max(14, cv360.clientWidth / 40);
+                while (acc360 >= stepPx) { step360(-1); acc360 -= stepPx; }
+                while (acc360 <= -stepPx) { step360(1); acc360 += stepPx; }
+            });
+            const endDrag360 = () => { dragX360 = null; clearTimeout(idleT360); idleT360 = setTimeout(startAuto360, 1500); };
+            cv360.addEventListener("pointerup", endDrag360);
+            cv360.addEventListener("pointercancel", endDrag360);
+        }
 
         // 实拍照片：点击灯箱 + 滚动进入视野时错峰入场动画
         const photoWrap = wrap.querySelector('.bp-photos');
