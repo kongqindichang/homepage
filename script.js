@@ -469,7 +469,7 @@ document.addEventListener('DOMContentLoaded', function() {
             certCard.className = 'certificate-card';
             certCard.innerHTML = `
                 <div class="certificate-image">
-                    <img src="${cert.img}" alt="${cert.name}" onerror="this.style.display='none'; this.parentElement.innerHTML='<span>📄</span>'">
+                    <img src="${cert.img}" alt="${cert.name}" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML='<span>📄</span>'">
                 </div>
                 <div class="certificate-name">${cert.name}</div>
             `;
@@ -492,6 +492,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const lightboxImage = document.getElementById('lightbox-image');
         const lightboxCaption = document.querySelector('.lightbox-caption');
         
+        lightboxImage.classList.add('loading');
+        lightboxImage.onload = () => lightboxImage.classList.remove('loading');
         lightboxImage.src = src;
         lightboxCaption.textContent = caption;
         lightbox.classList.add('show');
@@ -708,6 +710,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // 初始化页面
     renderProjects();
     renderCertifications();
+    // 预载英文版证明大图（首次点击灯箱秒开）
+    ["assets/internship_certificate/liuyao_internship_certificate_en.jpg",
+     "assets/internship_certificate/qianjin_internship_certificate_en.jpg"].forEach(src => {
+        const warm = new Image();
+        warm.src = src;
+    });
     initHero();
 
     // 添加滚动时的导航栏效果
