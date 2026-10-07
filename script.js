@@ -45,7 +45,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p class="bp-tagline">有眼、有手、有脚、有脑 —— 面向园区巡检拾取的具身智能双足轮足机器人</p>
             </div>
             <figure class="bp-video">
-                <video src="assets/videos/biped_finals_demo.mp4" controls preload="metadata" playsinline poster="assets/videos/biped_finals_demo_poster.jpg"></video>
+                <div class="bp-video-cover" role="button" aria-label="播放原型机运行画面">
+                    <img src="assets/videos/biped_finals_demo_poster.jpg" alt="原型机运行画面" loading="lazy">
+                    <span class="bp-video-playbtn" aria-hidden="true"></span>
+                </div>
                 <figcaption>原型机运行画面</figcaption>
             </figure>
             <div class="bp-body">
@@ -77,6 +80,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div>
         `;
+
+        // 原型机运行画面：点击封面 → 原地生成同层播放器（避免手机浏览器悬浮层）
+        const bpCover = wrap.querySelector(".bp-video-cover");
+        if (bpCover) {
+            bpCover.addEventListener("click", () => {
+                const v = document.createElement("video");
+                v.src = "assets/videos/biped_finals_demo.mp4";
+                v.controls = true;
+                v.autoplay = true;
+                v.playsInline = true;
+                v.setAttribute("webkit-playsinline", "");
+                v.setAttribute("x5-playsinline", "");
+                v.setAttribute("x5-video-player-type", "h5-page");
+                v.className = "bp-video-player";
+                bpCover.replaceWith(v);
+                v.play().catch(() => {});
+            });
+        }
 
         // 证书点击 → 灯箱放大（复用全局灯箱）
         wrap.querySelectorAll('.bp-cert').forEach(fig => {

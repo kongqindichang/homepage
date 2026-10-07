@@ -610,7 +610,8 @@ body {
     margin: 0 0 1.8rem;
 }
 
-.bp-video video {
+.bp-video video,
+.bp-video .bp-video-cover {
     width: 100%;
     aspect-ratio: 16 / 9;
     height: auto;
@@ -618,6 +619,57 @@ body {
     background: #000;
     border-radius: 12px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.bp-video .bp-video-cover {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.bp-video .bp-video-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.bp-video .bp-video-cover:hover img {
+    transform: scale(1.03);
+}
+
+.bp-video .bp-video-playbtn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.62);
+    border: 2px solid rgba(96, 165, 250, 0.75);
+    backdrop-filter: blur(4px);
+}
+
+.bp-video .bp-video-playbtn::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 54%;
+    transform: translate(-50%, -50%);
+    border-style: solid;
+    border-width: 13px 0 13px 22px;
+    border-color: transparent transparent transparent #e2e8f0;
+}
+
+.bp-video .bp-video-player {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    display: block;
+    background: #000;
+    border-radius: 12px;
 }
 
 .bp-video figcaption {
