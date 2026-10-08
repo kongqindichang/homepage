@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
         wrap.className = 'biped-showcase';
 
         const certs = [
-            { name: '"挑战杯"中国青年科技创新"揭榜挂帅"擂台赛 三等奖（2026 · 团队位次2）', img: 'assets/competition_certifications/jiebang_guaishuai_national_3rd_2026.png', short: '"挑战杯"揭榜挂帅擂台赛 · 全国三等奖（2026·团队位次第2）' },
+            { name: '"挑战杯"中国青年科技创新"揭榜挂帅"擂台赛 三等奖（2026 · 团队位次2）', img: 'assets/competition_certifications/jiebang_guaishuai_national_3rd_2026_v2.png', short: '"挑战杯"揭榜挂帅擂台赛 · 全国三等奖（2026·团队位次第2）' },
             { name: '"西门子杯"中国智能制造挑战赛 华东一赛区一等奖 · 队长（2025）', img: 'assets/competition_certifications/siemens_cup_east_china_1st_2025.png', short: '"西门子杯"智能制造挑战赛 · 华东一等奖（队长·2025）' },
             { name: '全国大学生节能减排社会实践与科技竞赛 全国二等奖——智能双足巡检拾取机器人（2025·队长）', img: 'assets/competition_certifications/energy_saving_national_2nd_biped_2025.jpg', short: '节能减排科技竞赛 · 全国二等奖（队长·2025）' },
             { name: '第十九届iCAN大学生创新创业大赛 上海赛区一等奖 · 队长（2025）', img: 'assets/competition_certifications/ican_shanghai_1st_2025.jpg', short: 'iCAN创新创业大赛 · 上海一等奖（队长·2025）' }
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <figure class="bp-hero">
                         <canvas class="bp-360cv" width="520" height="441"></canvas>
                         <span class="bp-360-tip">↔ 拖拽 360° 旋转</span>
-                        <figcaption>整机结构 · 拖拽 360° 旋转查看</figcaption>
+                        <figcaption>SolidWorks 建模 · 拖拽 360° 旋转查看</figcaption>
                     </figure>
                     <div class="bp-photos">
                         <figure class="bp-photo bp-p1"><img src="assets/project_biped/biped_real_front_studio.jpg" alt="原型机正视实拍"><figcaption>原型机 · 正视实拍</figcaption></figure>
@@ -433,7 +433,7 @@ document.addEventListener('DOMContentLoaded', function() {
             { category: 'competition certifications', name: '全国大学生数学建模竞赛 上海市二等奖 · 队长（2025）', img: 'assets/competition_certifications/cumcm_shanghai_2nd_2025.jpg' },
             { category: 'competition certifications', name: '第十九届iCAN大学生创新创业大赛 上海赛区一等奖 · 队长（2025）', img: 'assets/competition_certifications/ican_shanghai_1st_2025.jpg' },
             { category: 'competition certifications', name: '"西门子杯"中国智能制造挑战赛 华东一赛区一等奖 · 队长（2025）', img: 'assets/competition_certifications/siemens_cup_east_china_1st_2025.png' },
-            { category: 'competition certifications', name: '"挑战杯"中国青年科技创新"揭榜挂帅"擂台赛 三等奖——智慧环卫国产系统无人清扫车关键技术攻关（学生赛道·团队位次2·初审通过）', img: 'assets/competition_certifications/jiebang_guaishuai_national_3rd_2026.png' },
+            { category: 'competition certifications', name: '"挑战杯"中国青年科技创新"揭榜挂帅"擂台赛 三等奖——智慧环卫国产系统无人清扫车关键技术攻关（学生赛道·团队位次2·初审通过）', img: 'assets/competition_certifications/jiebang_guaishuai_national_3rd_2026_v2.png' },
             { category: 'competition certifications', name: '全国大学生节能减排社会实践与科技竞赛 全国二等奖——智能双足巡检拾取机器人（2025·队长）', img: 'assets/competition_certifications/energy_saving_national_2nd_biped_2025.jpg' },
             { category: 'competition certifications', name: '全国大学生节能减排社会实践与科技竞赛 全国二等奖——智冷绿运生鲜冷链箱 · 队员（2025）', img: 'assets/competition_certifications/energy_saving_national_2nd_coldchain_2025.jpg' },
             { category: 'competition certifications', name: '第二届上海市大学生节能减排竞赛 二等奖——智能双足巡检拾取机器人 · 队长（2025）', img: 'assets/competition_certifications/energy_saving_shanghai_2nd_biped_2025.jpg' },
