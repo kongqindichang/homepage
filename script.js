@@ -184,8 +184,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (dragX360 === null) return;
                 acc360 += e.clientX - dragX360; dragX360 = e.clientX;
                 const stepPx = Math.max(14, cv360.clientWidth / 40);
-                while (acc360 >= stepPx) { step360(-1); acc360 -= stepPx; }
-                while (acc360 <= -stepPx) { step360(1); acc360 += stepPx; }
+                while (acc360 >= stepPx) { step360(1); acc360 -= stepPx; }
+                while (acc360 <= -stepPx) { step360(-1); acc360 += stepPx; }
             });
             const endDrag360 = () => { dragX360 = null; clearTimeout(idleT360); idleT360 = setTimeout(startAuto360, 1500); };
             cv360.addEventListener("pointerup", endDrag360);
@@ -819,6 +819,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // 初始化页面
     renderProjects();
     renderCertifications();
+    // 预载比赛演示视频（后台缓冲，点播放秒开）
+    window.addEventListener("load", () => setTimeout(() => {
+        const pre = document.createElement("video");
+        pre.preload = "auto";
+        pre.muted = true;
+        pre.src = "assets/videos/biped_finals_demo.mp4";
+        pre.style.display = "none";
+        document.body.appendChild(pre);
+    }, 2500));
+
     // 预载英文版证明大图（首次点击灯箱秒开）
     ["assets/internship_certificate/liuyao_internship_certificate_en.jpg",
      "assets/internship_certificate/qianjin_internship_certificate_en.jpg"].forEach(src => {
