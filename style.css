@@ -722,10 +722,16 @@ body {
 }
 
 .bp-video .bp-video-ctrls {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-top: 10px;
+    padding: 10px 14px;
+    background: linear-gradient(transparent, rgba(2, 6, 23, 0.78));
 }
 
 .bp-ctrl-play {
@@ -816,14 +822,24 @@ body {
 
 .bp-360-tip {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 4px 10px;
+    left: 50%;
+    bottom: 14px;
+    transform: translateX(-50%);
+    padding: 7px 16px;
     border-radius: 999px;
-    background: rgba(15, 23, 42, 0.62);
-    color: #bfdbfe;
-    font-size: 0.72rem;
+    background: rgba(15, 23, 42, 0.72);
+    border: 1px solid rgba(96, 165, 250, 0.55);
+    color: #dbeafe;
+    font-size: 0.82rem;
+    letter-spacing: 0.05em;
     pointer-events: none;
+    white-space: nowrap;
+    animation: bp360tip 2.2s ease-in-out infinite;
+}
+
+@keyframes bp360tip {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.45; }
 }
 
 .bp-hero {
@@ -1550,4 +1566,14 @@ body {
     .videos-container {
         grid-template-columns: 1fr;
     }
+}
+
+/* 视频浏览器兼容性小标注 */
+.bp-video-note {
+    display: block;
+    text-align: center;
+    font-size: 0.72rem;
+    color: #94a3b8;
+    padding-top: 6px;
+    opacity: 0.85;
 }

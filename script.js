@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <span class="bp-video-playbtn" aria-hidden="true"></span>
                 </div>
                 <figcaption>原型机运行画面</figcaption>
+                <span class="bp-video-note">建议使用 Safari、Chrome、Edge、微信等主流浏览器观看 · 夸克等部分浏览器可能转为小窗播放</span>
             </figure>
             <div class="bp-body">
                 <div class="bp-text">
@@ -103,12 +104,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 holder.innerHTML =
                     '<video playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="metadata" src="assets/videos/biped_finals_demo.mp4"></video>' +
                     '<canvas></canvas>' +
-                    '<div class="bp-video-loading"><span class="bp-video-spin"></span>加载中…</div>' +
                     '<div class="bp-video-ctrls">' +
                     '<button class="bp-ctrl-play" aria-label="播放/暂停"></button>' +
                     '<input class="bp-ctrl-seek" type="range" min="0" max="1000" value="0" step="1" aria-label="播放进度">' +
                     '<span class="bp-ctrl-time">0:00 / 0:00</span>' +
-                    '</div>';
+                    '</div>' +
+                    '<div class="bp-video-loading"><span class="bp-video-spin"></span>加载中…</div>';
                 bpCover.replaceWith(holder);
                 const v = holder.querySelector("video");
                 const cv = holder.querySelector("canvas");
@@ -315,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 id: 8,
                 group: '比赛经历',
                 title: '智能巡检拾取多模态双足机器人（智巡清道 · 队长）',
-                description: '担任队长（申报书第一申报人），主导总体方案与系统集成，构建"有眼、有手、有脚、有脑"的具身智能巡逻拾取系统：自研YOLOv8改进模型经两年迭代，四大类垃圾综合识别率从23%提升至85%，支持200+类校园垃圾与障碍物识别（红外运动相机保证日夜作业）；融合思岚S2L二维激光雷达、宇树L2三维激光雷达、IMU、GPS与视觉的多传感器SLAM（EKF联合优化前端 + G2O图优化 + 回环检测后端），支持2D栅格与3D稠密点云建图及区域语义标签；分层路径规划采用A*全局规划+DWA局部动态避障，冗余路径减少33.38%，整体作业效率提升12.4%；后置六舵机机械臂配合双目相机实现精准夹取与分类投放，四连杆轮足结构结合IMU姿态反馈与PD平衡控制，在草地、碎石等非结构化地形稳定行走；上层Jetson Orin Nano + 下层STM32上下位机架构，配套移动端可视化管理平台。基于本项目已发表SCI二区论文3篇、IEEE论文1篇，另有多篇在投。获"挑战杯"揭榜挂帅擂台赛全国三等奖（智慧环卫国产系统无人清扫车关键技术攻关·学生赛道·团队位次第2）、节能减排竞赛全国二等奖、iCAN上海赛区一等奖、西门子杯华东赛区一等奖、汇创青春上海市一等奖等。',
+                description: '担任队长（申报书第一申报人），主导总体方案与系统集成，构建"有眼、有手、有脚、有脑"的具身智能巡逻拾取系统：自研YOLOv8改进模型经两年迭代，四大类垃圾综合识别率从23%提升至85%，支持200+类校园垃圾与障碍物识别（红外运动相机保证日夜作业）；融合思岚S2L二维激光雷达、宇树L2三维激光雷达、IMU、GPS与视觉的多传感器SLAM（EKF联合优化前端 + G2O图优化 + 回环检测后端），支持2D栅格与3D稠密点云建图及区域语义标签；分层路径规划采用A*全局规划+DWA局部动态避障，冗余路径减少33.38%，整体作业效率提升12.4%；后置六舵机机械臂配合双目相机实现精准夹取与分类投放，四连杆轮足结构结合IMU姿态反馈与PD平衡控制，在草地、碎石等非结构化地形稳定行走；上层Jetson Orin Nano + 下层STM32上下位机架构，配套移动端可视化管理平台。基于本项目已发表SCI二区论文3篇、IEEE论文1篇，另有多篇在投。获"挑战杯"揭榜挂帅擂台赛全国三等奖（智慧环卫国产系统无人清扫车关键技术攻关·学生赛道·团队位次第2）、节能减排竞赛全国二等奖、西门子杯华东赛区一等奖、iCAN上海赛区一等奖、汇创青春上海市一等奖等。',
                 image: 'assets/project_biped/biped_project_cover.jpg',
                 link: '#',
                 tags: ['YOLOv8', 'SLAM', 'A*+DWA', '机械臂', 'Jetson Orin', '双足轮足']
