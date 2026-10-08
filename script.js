@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <figure class="bp-hero">
                         <canvas class="bp-360cv" width="520" height="441"></canvas>
                         <span class="bp-360-tip">↔ 拖拽 360° 旋转</span>
-                        <figcaption>设计建模 · 拖拽 360° 交互展示</figcaption>
+                        <figcaption>整机结构 · 拖拽 360° 旋转查看</figcaption>
                     </figure>
                     <div class="bp-photos">
                         <figure class="bp-photo bp-p1"><img src="assets/project_biped/biped_real_front_studio.jpg" alt="原型机正视实拍"><figcaption>原型机 · 正视实拍</figcaption></figure>
@@ -597,19 +597,44 @@ document.addEventListener('DOMContentLoaded', function() {
     function openLightbox(src, caption, index, images) {
         currentImageIndex = index;
         currentImages = images;
-        
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImage = document.getElementById('lightbox-image');
-        const lightboxCaption = document.querySelector('.lightbox-caption');
-        
-        lightboxImage.classList.add('loading');
-        lightboxImage.onload = () => lightboxImage.classList.remove('loading');
-        lightboxImage.src = src;
-        lightboxCaption.textContent = caption;
-        lightbox.classList.add('show');
-        
+        setLightboxImage(src, caption);
+        document.getElementById('lightbox').classList.add('show');
         // 阻止背景滚动
         document.body.style.overflow = 'hidden';
+    }
+
+    // 每次换图统一走这里：加载态、标题、序号一起更新，杜绝旧图残影与版式跳动
+    function setLightboxImage(src, caption) {
+        const lightbox = document.getElementById('lightbox');
+        const img = document.getElementById('lightbox-image');
+        const cap = lightbox.querySelector('.lightbox-caption');
+        const cnt = lightbox.querySelector('.lightbox-counter');
+        const content = lightbox.querySelector('.lightbox-content');
+
+        cap.textContent = caption;
+        cnt.textContent = currentImages.length > 1
+            ? (currentImageIndex + 1) + ' / ' + currentImages.length
+            : '';
+
+        const finish = () => {
+            img.classList.remove('loading');
+            content.classList.remove('loading');
+        };
+
+        // 同一张已显示的图不会触发 onload，直接结束加载态
+        if (img.getAttribute('src') === src && img.complete && img.naturalWidth > 0) {
+            finish();
+            return;
+        }
+
+        img.classList.add('loading');
+        content.classList.add('loading');
+        img.onload = finish;
+        img.onerror = () => {
+            finish();
+            cap.textContent = '图片加载失败，请检查网络后重试';
+        };
+        img.src = src;
     }
 
     function closeLightbox() {
@@ -643,12 +668,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateLightboxImage() {
-        const lightboxImage = document.getElementById('lightbox-image');
-        const lightboxCaption = document.querySelector('.lightbox-caption');
-        
         const currentCert = currentImages[currentImageIndex];
-        lightboxImage.src = currentCert.img;
-        lightboxCaption.textContent = currentCert.name;
+        setLightboxImage(currentCert.img, currentCert.name);
     }
 
     // Lightbox事件监听
@@ -664,6 +685,19 @@ document.addEventListener('DOMContentLoaded', function() {
         if (now - wheelLockTime < 350 || Math.abs(e.deltaY) < 8) return;
         wheelLockTime = now;
         if (e.deltaY > 0) showNextImage(); else showPrevImage();
+    }, { passive: true });
+
+    // 手机左右滑动翻页
+    let lbTouchX = null;
+    const lbEl = document.getElementById('lightbox');
+    lbEl.addEventListener('touchstart', function(e) {
+        lbTouchX = e.changedTouches[0].clientX;
+    }, { passive: true });
+    lbEl.addEventListener('touchend', function(e) {
+        if (lbTouchX === null) return;
+        const dx = e.changedTouches[0].clientX - lbTouchX;
+        if (Math.abs(dx) > 50) { if (dx < 0) showNextImage(); else showPrevImage(); }
+        lbTouchX = null;
     }, { passive: true });
 
     // ESC键关闭Lightbox

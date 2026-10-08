@@ -1324,17 +1324,16 @@ body {
 }
 
 /* Lightbox */
+/* Lightbox：图片+说明纵向排列，按钮固定在视口边缘（手机上也不会跑出屏幕） */
 .lightbox {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
+    inset: 0;
+    background: rgba(7, 11, 19, 0.95);
     display: none;
     align-items: center;
     justify-content: center;
     z-index: 2000;
+    padding: 64px 12px 24px;
 }
 
 .lightbox.show {
@@ -1343,77 +1342,114 @@ body {
 
 .lightbox-content {
     position: relative;
-    max-width: 90%;
-    max-height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    max-height: 100%;
 }
 
+/* 加载期间锁定占位盒，加载完成立即收缩到图片真实尺寸（不再留空框） */
+.lightbox-content.loading {
+    min-width: min(88vw, 480px);
+    min-height: min(56vh, 340px);
+}
+
+.lightbox-content.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 44px;
+    height: 44px;
+    margin: -22px 0 0 -22px;
+    border: 4px solid rgba(255, 255, 255, 0.25);
+    border-top-color: #60a5fa;
+    border-radius: 50%;
+    animation: lbSpin 0.8s linear infinite;
+}
+
+@keyframes lbSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* 灯箱大图：等比完整显示；换图期间隐藏旧图避免残影 */
+#lightbox-image {
+    display: block;
+    max-width: 100%;
+    max-height: calc(100vh - 170px);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+#lightbox-image.loading {
+    opacity: 0;
+}
+
+/* 说明文字回到正常文档流，紧跟图片下方，不再绝对定位（消灭空行与重叠） */
+.lightbox-caption {
+    flex: 0 0 auto;
+    margin-top: 12px;
+    max-width: 92vw;
+    text-align: center;
+    color: #fff;
+    font-size: clamp(0.85rem, 2.5vw, 1.05rem);
+    line-height: 1.6;
+}
+
+.lightbox-counter {
+    flex: 0 0 auto;
+    margin-top: 6px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+}
+
+/* 控制按钮固定在视口边缘 */
 .lightbox-close,
 .lightbox-prev,
 .lightbox-next {
-    position: absolute;
+    position: fixed;
+    z-index: 2001;
     color: white;
-    font-size: 2rem;
-    background: rgba(0, 0, 0, 0.5);
-    border: none;
+    font-size: 1.6rem;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .lightbox-close {
-    top: -60px;
-    right: 0;
+    top: 14px;
+    right: 14px;
 }
 
 .lightbox-prev {
-    left: -60px;
+    left: 12px;
     top: 50%;
-    transform: translateY(-50%);
+    margin-top: -24px;
 }
 
 .lightbox-next {
-    right: -60px;
+    right: 12px;
     top: 50%;
-    transform: translateY(-50%);
+    margin-top: -24px;
 }
 
 .lightbox-close:hover,
 .lightbox-prev:hover,
 .lightbox-next:hover {
-    background: rgba(0, 0, 0, 0.8);
-}
-
-/* 灯箱大图：HTML中是 id，必须用 # 选择器才能约束尺寸（等比完整显示） */
-#lightbox-image {
-    display: block;
-    max-width: 100%;
-    max-height: 80vh;
-    object-fit: contain;
-    /* 加载期间保持稳定占位盒，防止灯箱塌陷、标题竖排 */
-    min-width: min(78vw, 460px);
-    min-height: min(52vh, 320px);
-    background-color: #0b1220;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50'%3E%3Ccircle cx='25' cy='25' r='18' fill='none' stroke='%2360a5fa' stroke-width='4' stroke-dasharray='85' stroke-linecap='round'%3E%3CanimateTransform attributeName='transform' type='rotate' from='0 25 25' to='360 25 25' dur='1s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 48px 48px;
-}
-
-.lightbox-caption {
-    position: absolute;
-    bottom: -50px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: max-content;
-    max-width: 86vw;
-    text-align: center;
-    color: white;
-    font-size: 1.1rem;
+    background: rgba(96, 165, 250, 0.85);
 }
 
 /* 动画 */
@@ -1529,23 +1565,28 @@ body {
         min-width: 120px;
     }
 
-    .lightbox-close {
-        top: -40px;
+    .lightbox {
+        padding: 60px 8px 18px;
     }
 
+    .lightbox-close,
     .lightbox-prev,
     .lightbox-next {
         width: 40px;
         height: 40px;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 
     .lightbox-prev {
-        left: -50px;
+        margin-top: -20px;
     }
 
     .lightbox-next {
-        right: -50px;
+        margin-top: -20px;
+    }
+
+    #lightbox-image {
+        max-height: calc(100vh - 190px);
     }
 }
 
