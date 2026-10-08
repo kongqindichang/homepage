@@ -1,5 +1,19 @@
 // 等待DOM加载完成
 document.addEventListener('DOMContentLoaded', function() {
+    // 视频预下载：页面空闲时把整个 mp4 取到内存 Blob，点播放零等待（buildBipedShowcase 与底部初始化共用）
+    // 视频预下载：页面空闲时把整个 mp4 取到内存 Blob，点播放零等待
+    const BP_VIDEO_URL = "assets/videos/biped_finals_demo.mp4";
+    let bpBlobURL = null, bpBlobPromise = null;
+    const prefetchBpVideo = () => {
+        if (bpBlobURL || bpBlobPromise) return;
+        const nav = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        if (nav && (nav.saveData || /2g/.test(nav.effectiveType || ""))) return; // 省流模式/2G 不预载
+        bpBlobPromise = fetch(BP_VIDEO_URL)
+        .then(r => { if (!r.ok) throw new Error(r.status); return r.blob(); })
+        .then(b => { bpBlobURL = URL.createObjectURL(b); })
+        .catch(() => { bpBlobPromise = null; });
+    };
+
     // 导航栏功能
     const navbarToggle = document.querySelector('.navbar-toggle');
     const navbarMenu = document.querySelector('.navbar-menu');
@@ -102,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const holder = document.createElement("div");
                 holder.className = "bp-video-player";
                 holder.innerHTML =
-                    '<video playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="metadata" src="assets/videos/biped_finals_demo.mp4"></video>' +
+                    ('<video playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="metadata" src="' + (bpBlobURL || BP_VIDEO_URL) + '"></video>') +
                     '<canvas></canvas>' +
                     '<div class="bp-video-ctrls">' +
                     '<button class="bp-ctrl-play" aria-label="播放/暂停"></button>' +
@@ -854,15 +868,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // 初始化页面
     renderProjects();
     renderCertifications();
-    // 预载比赛演示视频（后台缓冲，点播放秒开）
-    window.addEventListener("load", () => setTimeout(() => {
-        const pre = document.createElement("video");
-        pre.preload = "auto";
-        pre.muted = true;
-        pre.src = "assets/videos/biped_finals_demo.mp4";
-        pre.style.display = "none";
-        document.body.appendChild(pre);
-    }, 2500));
+    // 预载比赛演示视频：页面加载完且浏览器空闲时 fetch 成 Blob（iOS 也会执行 fetch，隐藏 video 的 preload=auto 在 iOS 无效）
+    window.addEventListener("load", () => {
+        const kick = () => { try { prefetchBpVideo(); } catch (e) {} };
+        if ("requestIdleCallback" in window) requestIdleCallback(kick, { timeout: 4000 });
+        else setTimeout(kick, 2500);
+    });
 
     // 预载英文版证明大图（首次点击灯箱秒开）
     ["assets/internship_certificate/liuyao_internship_certificate_en.jpg",
