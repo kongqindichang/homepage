@@ -750,25 +750,57 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 联系表单提交
+    // 联系表单提交：经 FormSubmit.co 转发到站长邮箱（纯静态站点无后端，走第三方转发服务）
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
+        const OWNER_EMAIL = 'andy799775362@163.com';
+        const showFormTip = (text, isErr) => {
+            let tip = contactForm.querySelector('.form-tip');
+            if (!tip) {
+                tip = document.createElement('div');
+                tip.className = 'form-tip';
+                contactForm.appendChild(tip);
+            }
+            tip.textContent = text;
+            tip.classList.toggle('err', !!isErr);
+            tip.classList.toggle('ok', !isErr);
+        };
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            // 获取表单数据
-            const formData = new FormData(contactForm);
-            const name = contactForm.querySelector('input[type="text"]').value;
-            const email = contactForm.querySelector('input[type="email"]').value;
-            const message = contactForm.querySelector('textarea').value;
-            
-            // 简单验证
-            if (name && email && message) {
-                alert('提交成功！感谢您的留言，我会尽快回复您。');
-                contactForm.reset();
-            } else {
-                alert('请填写完整信息后再提交。');
+            const name = contactForm.querySelector('input[type="text"]').value.trim();
+            const email = contactForm.querySelector('input[type="email"]').value.trim();
+            const message = contactForm.querySelector('textarea').value.trim();
+            if (!name || !email || !message) {
+                showFormTip('请填写完整信息后再提交。', true);
+                return;
             }
+            const btn = contactForm.querySelector('button[type="submit"]');
+            const oldText = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = '发送中…';
+            fetch('https://formsubmit.co/ajax/' + OWNER_EMAIL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    _subject: '【主页留言】' + name,
+                    姓名: name,
+                    回复邮箱: email,
+                    留言: message
+                })
+            })
+            .then(r => r.json().then(j => ({ ok: r.ok, j })))
+            .then(({ ok, j }) => {
+                if (ok && (j.success === 'true' || j.success === true)) {
+                    contactForm.reset();
+                    showFormTip('提交成功！我会尽快回复您。', false);
+                } else {
+                    showFormTip('暂时未能送达，请直接发邮件到 ' + OWNER_EMAIL, true);
+                }
+            })
+            .catch(() => {
+                showFormTip('网络异常，暂时无法发送。可直接发邮件到 ' + OWNER_EMAIL, true);
+            })
+            .finally(() => { btn.disabled = false; btn.textContent = oldText; });
         });
     }
 

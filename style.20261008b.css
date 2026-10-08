@@ -1282,6 +1282,26 @@ body {
     transition: background 0.3s ease;
 }
 
+.contact-form button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.form-tip {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.form-tip.ok {
+    color: #4ade80;
+}
+
+.form-tip.err {
+    color: #f87171;
+}
+
 .contact-form button:hover {
     background: var(--accent-hover);
 }
