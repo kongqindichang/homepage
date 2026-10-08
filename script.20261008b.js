@@ -285,7 +285,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 gallery: [
                     { img: 'assets/research_paper_figs/coralyolo_architecture.png', caption: 'Figure 1 · Coral-YOLO 整体架构', name: '论文配图 Figure 1 · Coral-YOLO 整体架构：时序图像输入、多项创新的检测框架（Sensors 2025）' },
                     { img: 'assets/research_paper_figs/coralyolo_training_dynamics.png', caption: 'Figure 7 · 训练过程', name: '论文配图 Figure 7 · CR-Mix 验证集训练过程：Coral-YOLO 的 mAP 收敛速度与精度显著高于基线' },
-                    { img: 'assets/research_paper_figs/coralyolo_detection_compare.jpg', caption: 'Figure 9 · 检测与预测成果', name: '论文配图 Figure 9 · 真实珊瑚礁场景检测与预测成果对比（Coral-YOLO vs 基线）', span: 2 },
+                    { img: 'assets/research_paper_figs/coralyolo_detection_compare_v2.jpg', caption: 'Figure 9 · 检测与预测成果', name: '论文配图 Figure 9 · 真实珊瑚礁场景检测与预测成果对比（Coral-YOLO vs 基线）', span: 2 },
                     { img: 'assets/research_paper_figs/coralyolo_heatmap.jpg', caption: 'Figure 10 · Grad-CAM 热力图', name: '论文配图 Figure 10 · Grad-CAM 诊断：Coral-YOLO 的注意力更聚焦珊瑚目标区域', span: 2 },
                     { img: 'assets/research_paper_certification/paper_sensors_coral_yolo_2025.jpg', caption: '论文发表证书', name: 'Coral-YOLO（Sensors 2025）论文发表证书' }
                 ],

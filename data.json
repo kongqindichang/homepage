@@ -154,7 +154,7 @@
           "name": "论文配图 Figure 7 · CR-Mix 验证集训练过程：Coral-YOLO 的 mAP 收敛速度与精度显著高于基线"
         },
         {
-          "img": "assets/research_paper_figs/coralyolo_detection_compare.jpg",
+          "img": "assets/research_paper_figs/coralyolo_detection_compare_v2.jpg",
           "caption": "Figure 9 · 检测成果对比",
           "name": "论文配图 Figure 9 · 真实珊瑚礁场景检测与预测成果对比（Coral-YOLO vs 基线）",
           "span": 2
