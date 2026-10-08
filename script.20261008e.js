@@ -875,9 +875,11 @@ document.addEventListener('DOMContentLoaded', function() {
         else setTimeout(kick, 2500);
     });
 
-    // 预载英文版证明大图（首次点击灯箱秒开）
+    // 预载非常驻展示的大图（首次点击灯箱/切分类秒开）：实习证明英文版 + 推荐信（证书墙按分类渲染，不预载则点击时才开始下载）
     ["assets/internship_certificate/liuyao_internship_certificate_en.jpg",
-     "assets/internship_certificate/qianjin_internship_certificate_en.jpg"].forEach(src => {
+     "assets/internship_certificate/qianjin_internship_certificate_en.jpg",
+     "assets/letters_of_recommendation/LOR_Xiong_Yang_Prof_Tian.jpg",
+     "assets/letters_of_recommendation/LOR_Xiong_Yang_Prof_Wu.jpg"].forEach(src => {
         const warm = new Image();
         warm.src = src;
     });
