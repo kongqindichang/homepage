@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const holder = document.createElement("div");
                 holder.className = "bp-video-player";
                 holder.innerHTML =
-                    '<video playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="auto" src="assets/videos/biped_finals_demo.mp4"></video>' +
+                    '<video playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="metadata" src="assets/videos/biped_finals_demo.mp4"></video>' +
                     '<canvas></canvas>' +
                     '<div class="bp-video-loading"><span class="bp-video-spin"></span>加载中…</div>' +
                     '<div class="bp-video-ctrls">' +
