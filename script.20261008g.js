@@ -1,5 +1,19 @@
 // 等待DOM加载完成
 document.addEventListener('DOMContentLoaded', function() {
+    // 全站图片失败自动重试：网络/CDN 抖动导致加载失败时，换缓存穿透参数重试一次
+    // （error 事件不冒泡必须捕获；脚本执行前就已失败的图也会被扫描补救）
+    const imgRetry = (im) => {
+        if (!im || im.tagName !== 'IMG' || im.dataset.retried) return;
+        im.dataset.retried = '1';
+        const src = im.getAttribute('src');
+        if (!src || src.startsWith('data:')) return;
+        im.src = src + (src.includes('?') ? '&' : '?') + 'retry=' + Date.now();
+    };
+    document.addEventListener('error', e => imgRetry(e.target), true);
+    document.querySelectorAll('img').forEach(im => {
+        if (im.complete && im.naturalWidth === 0) imgRetry(im);
+    });
+
     // 视频预下载：页面空闲时把整个 mp4 取到内存 Blob，点播放零等待（buildBipedShowcase 与底部初始化共用）
     // 视频预下载：页面空闲时把整个 mp4 取到内存 Blob，点播放零等待
     const BP_VIDEO_URL = "assets/videos/biped_finals_demo.mp4";
