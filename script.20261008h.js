@@ -192,18 +192,39 @@ document.addEventListener('DOMContentLoaded', function() {
             const frames360 = new Array(N360).fill(null);
             let loaded360 = 0, cur360 = 0, auto360 = null, dragX360 = null, acc360 = 0, idleT360 = null;
             const show360 = i => {
-                const im = frames360[i];
-                if (im && im.complete && im.naturalWidth) {
-                    cx360.clearRect(0, 0, cv360.width, cv360.height);
-                    cx360.drawImage(im, 0, 0, cv360.width, cv360.height);
+                let idx = i;
+                if (!(frames360[idx] && frames360[idx].complete && frames360[idx].naturalWidth)) {
+                    // 目标帧还没加载完（慢网络）：退而显示最近的已加载帧，拖拽永远有反馈
+                    let best = -1, bestD = 1e9;
+                    for (let k = 0; k < N360; k++) {
+                        const f = frames360[k];
+                        if (f && f.complete && f.naturalWidth) {
+                            const d = Math.min(Math.abs(k - i), N360 - Math.abs(k - i));
+                            if (d < bestD) { bestD = d; best = k; }
+                        }
+                    }
+                    if (best < 0) return;
+                    idx = best;
                 }
+                const im = frames360[idx];
+                cx360.clearRect(0, 0, cv360.width, cv360.height);
+                cx360.drawImage(im, 0, 0, cv360.width, cv360.height);
             };
             const step360 = d => { cur360 = (cur360 + d + N360) % N360; show360(cur360); };
             const startAuto360 = () => { stopAuto360(); if (loaded360 < N360) return; auto360 = setInterval(() => step360(1), 130); };
             const stopAuto360 = () => { if (auto360) { clearInterval(auto360); auto360 = null; } };
+            let shownAny360 = false;
             for (let i = 0; i < N360; i++) {
                 const im = new Image();
-                im.onload = () => { if (++loaded360 === N360) { show360(cur360); startAuto360(); } };
+                im.onload = () => {
+                    if (!shownAny360) { shownAny360 = true; show360(cur360); } // 第一帧到手就先画出来
+                    if (++loaded360 === N360) startAuto360();
+                };
+                im.onerror = () => {
+                    if (im.dataset.retried) return;
+                    im.dataset.retried = "1";
+                    im.src = im.src.split("?")[0] + "?retry=" + Date.now();
+                };
                 im.src = "assets/project_biped/rotate360/f" + String(i + 1).padStart(3, "0") + ".webp";
                 frames360[i] = im;
             }
@@ -644,9 +665,11 @@ document.addEventListener('DOMContentLoaded', function() {
             ? (currentImageIndex + 1) + ' / ' + currentImages.length
             : '';
 
+        let capText = caption;
         const finish = () => {
             img.classList.remove('loading');
             content.classList.remove('loading');
+            cap.textContent = capText; // 失败提示若已显示，重试成功后还原标题
         };
 
         // 同一张已显示的图不会触发 onload，直接结束加载态
@@ -660,7 +683,7 @@ document.addEventListener('DOMContentLoaded', function() {
         img.onload = finish;
         img.onerror = () => {
             finish();
-            cap.textContent = '图片加载失败，请检查网络后重试';
+            capText = '图片加载失败，请检查网络后重试'; cap.textContent = capText;
         };
         img.src = src;
     }
