@@ -18,14 +18,49 @@ document.addEventListener('DOMContentLoaded', function() {
     // 视频预下载：页面空闲时把整个 mp4 取到内存 Blob，点播放零等待
     const BP_VIDEO_URL = "assets/videos/biped_finals_demo.mp4";
     let bpBlobURL = null, bpBlobPromise = null;
+    const idbOpen = () => new Promise((resolve, reject) => {
+        const rq = indexedDB.open('xyCache', 1);
+        rq.onupgradeneeded = () => { try { rq.result.createObjectStore('videos'); } catch (e) {} };
+        rq.onsuccess = () => resolve(rq.result);
+        rq.onerror = () => reject(rq.error);
+    });
+    const idbGet = async (key) => {
+        try {
+            const db = await idbOpen();
+            return await new Promise((resolve, reject) => {
+                const rq = db.transaction('videos').objectStore('videos').get(key);
+                rq.onsuccess = () => resolve(rq.result || null);
+                rq.onerror = () => reject(rq.error);
+            });
+        } catch (e) { return null; }
+    };
+    const idbPut = async (key, blob) => {
+        try {
+            const db = await idbOpen();
+            await new Promise((resolve, reject) => {
+                const tx = db.transaction('videos', 'readwrite');
+                tx.objectStore('videos').put(blob, key);
+                tx.oncomplete = () => resolve(true);
+                tx.onerror = () => reject(tx.error);
+            });
+        } catch (e) {}
+    };
     const prefetchBpVideo = () => {
         if (bpBlobURL || bpBlobPromise) return;
         const nav = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
         if (nav && (nav.saveData || /2g/.test(nav.effectiveType || ""))) return; // 省流模式/2G 不预载
-        bpBlobPromise = fetch(BP_VIDEO_URL)
-        .then(r => { if (!r.ok) throw new Error(r.status); return r.blob(); })
-        .then(b => { bpBlobURL = URL.createObjectURL(b); })
-        .catch(() => { bpBlobPromise = null; });
+        bpBlobPromise = (async () => {
+            // 先查本地持久缓存：上次看过的视频直接秒开，不再走网络
+            const cached = await idbGet('biped_finals_v2');
+            if (cached) { bpBlobURL = URL.createObjectURL(cached); return; }
+            try {
+                const r = await fetch(BP_VIDEO_URL);
+                if (!r.ok) throw new Error(r.status);
+                const b = await r.blob();
+                bpBlobURL = URL.createObjectURL(b);
+                idbPut('biped_finals_v2', b); // 存入本地，下次访问零等待
+            } catch (e) { bpBlobPromise = null; }
+        })();
     };
 
     // 导航栏功能
@@ -211,14 +246,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 cx360.drawImage(im, 0, 0, cv360.width, cv360.height);
             };
             const step360 = d => { cur360 = (cur360 + d + N360) % N360; show360(cur360); };
-            const startAuto360 = () => { stopAuto360(); if (loaded360 < N360) return; auto360 = setInterval(() => step360(1), 130); };
+            const AUTO_MIN360 = 30; // 至少加载30帧(约1/3圈素材)即自动旋转，慢网络不必等全部82帧
+            const startAuto360 = () => { stopAuto360(); if (loaded360 < Math.min(AUTO_MIN360, N360)) return; auto360 = setInterval(() => step360(1), 130); };
             const stopAuto360 = () => { if (auto360) { clearInterval(auto360); auto360 = null; } };
             let shownAny360 = false;
             for (let i = 0; i < N360; i++) {
                 const im = new Image();
                 im.onload = () => {
                     if (!shownAny360) { shownAny360 = true; show360(cur360); } // 第一帧到手就先画出来
-                    if (++loaded360 === N360) startAuto360();
+                    if (++loaded360 === Math.min(AUTO_MIN360, N360) || loaded360 === N360) startAuto360();
                 };
                 im.onerror = () => {
                     if (im.dataset.retried) return;
@@ -237,7 +273,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 while (acc360 >= stepPx) { step360(1); acc360 -= stepPx; }
                 while (acc360 <= -stepPx) { step360(-1); acc360 += stepPx; }
             });
-            const endDrag360 = () => { dragX360 = null; clearTimeout(idleT360); idleT360 = setTimeout(startAuto360, 1500); };
+            const endDrag360 = () => { dragX360 = null; clearTimeout(idleT360); idleT360 = setTimeout(startAuto360, 2000); };
             cv360.addEventListener("pointerup", endDrag360);
             cv360.addEventListener("pointercancel", endDrag360);
         }
