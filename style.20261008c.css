@@ -359,6 +359,10 @@ body {
 .pp-text .project-tags { margin-top: 1rem; }
 
 /* 面板内图墙马赛克：span2 通栏；证书格金色描边凸显 */
+.pp-text {
+    align-self: start; /* 长图墙时标题置顶，不再垂直居中悬在中间 */
+}
+
 .pp-mosaic {
     display: grid;
     grid-template-columns: 1fr 1fr;
