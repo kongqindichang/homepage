@@ -329,92 +329,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 venue: 'Journal of Marine Science and Engineering · SCI 收录 · JCR Q2 · IF 2.8',
                 description: '论文题目《Spatiotemporal Meta-Reinforcement Learning for Multi-USV Adversarial Games Using a Hybrid GAT-Transformer》。提出Adv-TransAC时空元强化学习框架：GAT-Transformer+CTDE架构与动态多模态注意力融合，实现空间建模、时序推理与异构传感器融合；引入对抗元学习与课程学习，对抗成功率78.5%，通信带宽降低约70%，单步推理18.6ms。',
                 gallery: [
-                    { img: 'assets/research_paper_figs/jmse_advtransac_framework.png', caption: 'Figure 2 · 研究方法总框架', name: '论文配图 Figure 2 · Adv-TransAC 研究方法总框架（JMSE 2025，第一作者）', span: 2 },
-                    { img: 'assets/research_paper_figs/jmse_meta_learning_architecture.png', caption: 'Figure 3 · 对抗元学习架构', name: '论文配图 Figure 3 · 对抗元学习架构：对手编码器 + GNN-Transformer 基座策略 + 元调节器与课程学习调度' },
-                    { img: 'assets/research_paper_figs/jmse_multimodal_fusion_pipeline.png', caption: 'Figure 4 · 动态多模态融合管线', name: '论文配图 Figure 4 · 动态多模态融合管线：雷达点云 / 占据栅格 / 威胁热图时空对齐与融合' },
-                    { img: 'assets/research_paper_certification/paper_jmse_multi_usv_meta_rl_2025.png', caption: '论文发表证书 · 第一作者', name: 'Spatiotemporal Meta-RL for Multi-USV Adversarial Games（JMSE 2025，第一作者）论文发表证书', span: 2 }
-                ],
-                link: '#',
-                tags: ['第一作者', '多智能体强化学习', 'GAT', 'Transformer', 'CTDE', 'PyTorch']
-            },
-            {
-                id: 3,
-                group: '论文发表',
-                type: 'direction',
-                title: '研究方向二 · 具身视觉感知与边缘部署',
-                description: '面向果园、珊瑚礁等真实场景，研究轻量化目标检测与智能光学感知：让模型在遮挡、光照退化、小目标等困难条件下保持稳定的识别与预测，并落地到 Jetson 等边缘设备实时推理，服务智慧农业与海洋栖息地监测等具身应用。以下两篇姊妹篇共同构成该方向的技术栈。'
-            },
-            {
-                id: 4,
-                group: '论文发表',
-                reverse: true,
-                title: 'Orchard-YOLO：复杂光学环境下的果园果实检测',
-                venue: 'Photonics · SCI 收录 · JCR Q2',
-                description: '论文正式题目（以期刊证书为准）《Orchard-YOLO: A Robust Deep Learning Framework for Fruit Detection under Complex Optical and Environmental Degradation》。参与轻量化检测网络研发与边缘部署：Ghost 卷积骨干 + CA 增强特征融合 + P2 高分辨率检测头，实现遮挡与光照鲁棒识别及 Jetson 边缘设备实时推理。',
-                gallery: [
-                    { img: 'assets/research_paper_figs/orchardyolo_architecture.png', caption: 'Figure 2 · Orchard-YOLO 整体架构', name: '论文配图 Figure 2 · Orchard-YOLO 整体架构：Ghost 卷积骨干 + CA 增强特征融合 + P2 高分辨率检测头（Photonics 2026）', span: 2 },
-                    { img: 'assets/research_paper_figs/orchardyolo_occlusion_results.jpg', caption: 'Figure 8 · 遮挡递增检测成果', name: '论文配图 Figure 8 · 清洁 / 30% / 70% 遮挡下检测成果对比：重度遮挡下 YOLOv13 仍保持更多果实定位' },
-                    { img: 'assets/research_paper_figs/orchardyolo_robustness.png', caption: 'Figure 11 · 鲁棒性得分对比', name: '论文配图 Figure 11 · 遮挡/光照/尺度/复合应力下的鲁棒性得分对比（YOLOv13 相对 YOLOv8 全面占优）' },
-                    { img: 'assets/research_paper_certification/paper_photonics_orchard_yolo_2026.jpg', caption: '论文发表证书', name: 'Orchard-YOLO（Photonics 2026）论文发表证书', span: 2 }
-                ],
-                link: '#',
-                tags: ['YOLO', '轻量化', 'Jetson', '边缘部署', 'Photonics']
-            },
-            {
-                id: 5,
-                group: '论文发表',
-                reverse: false,
-                title: 'Coral-YOLO：面向珊瑚礁海洋监测的智能光学感知',
-                venue: 'Sensors · SCI 收录 · JCR Q2',
-                description: '参与智能光学视觉感知框架中检测与预测部分的实现：局部-全局注意力（LGA）单元与时序预测模块，提升小目标、遮挡与跨域场景下的检测稳定性及时序预测能力，用于高保真海洋栖息地监测与预报。',
-                gallery: [
-                    { img: 'assets/research_paper_figs/coralyolo_architecture.png', caption: 'Figure 1 · Coral-YOLO 整体架构', name: '论文配图 Figure 1 · Coral-YOLO 整体架构：时序图像输入、多项创新的检测框架（Sensors 2025）' },
-                    { img: 'assets/research_paper_figs/coralyolo_training_dynamics.png', caption: 'Figure 7 · 训练过程', name: '论文配图 Figure 7 · CR-Mix 验证集训练过程：Coral-YOLO 的 mAP 收敛速度与精度显著高于基线' },
-                    { img: 'assets/research_paper_figs/coralyolo_detection_compare_v2.jpg', caption: 'Figure 9 · 检测与预测成果', name: '论文配图 Figure 9 · 真实珊瑚礁场景检测与预测成果对比（Coral-YOLO vs 基线）', span: 2 },
-                    { img: 'assets/research_paper_figs/coralyolo_heatmap.jpg', caption: 'Figure 10 · Grad-CAM 热力图', name: '论文配图 Figure 10 · Grad-CAM 诊断：Coral-YOLO 的注意力更聚焦珊瑚目标区域', span: 2 },
-                    { img: 'assets/research_paper_certification/paper_sensors_coral_yolo_2025.jpg', caption: '论文发表证书', name: 'Coral-YOLO（Sensors 2025）论文发表证书' }
-                ],
-                link: '#',
-                tags: ['YOLO', '目标检测', '时序预测', '海洋感知', 'Sensors']
-            },
-            {
-                id: 6,
-                group: '工作经历',
-                title: '实习一：智能决策与Agent算法研发（广西柳药集团 · A股603368 · 2026.07-2026.09）',
-                description: '实习项目：基于CV/OCR+文本多模态，实现界面动作、时序日志与源表字段的高精度关联与行为序列对齐；参与设计基于示范学习（LfD）的GUI自动化Agent方案、自动化脚本与查询映射模块；参与数据脱敏与数据字典标准化，构建覆盖边界条件的鲁棒性测试集。',
-                image: 'assets/internship_certificate/liuyao_internship_certificate_cn.jpg',
-                link: '#',
-                enCert: { img: 'assets/internship_certificate/liuyao_internship_certificate_en.jpg', name: '实习证明（英文版）—— 广西柳药集团 Internship Certificate (EN)' },
-                tags: ['多模态', 'OCR', 'LfD', 'GUI Agent', '数据治理']
-            },
-            {
-                id: 7,
-                group: '工作经历',
-                title: '实习二：机器人视觉检测（乾锦智能 · 上汽通用五菱产线 · 2026.01-2026.04）',
-                description: '实习项目：涂胶检测采用YOLO系列2D视觉检测，实现胶条有无、长宽度、断胶、偏移等缺陷快速识别；焊点检测采用线结构光三维测量+CV算法，实现焊点余高、咬边、错边高精度测量与表面缺陷识别；参与多传感器融合与智能决策模块开发。系统已部署于上汽通用五菱自动化生产线并稳定运行。',
-                venue: '柳州乾锦智能装备有限公司 · 上汽通用五菱产线',
-                image: 'assets/internship_certificate/qianjin_internship_certificate_cn.jpg',
-                link: '#',
-                gallery: [
-                    { img: 'assets/qianjin_vision_work/qianjin_vision_01.jpg', caption: '产线视觉检测工位实景 01', name: '乾锦实习现场 01 · 视觉检测工位' },
-                    { img: 'assets/qianjin_vision_work/qianjin_vision_02.jpg', caption: '产线视觉检测工位实景 02', name: '乾锦实习现场 02 · 视觉检测工位' },
-                    { img: 'assets/qianjin_vision_work/qianjin_vision_03.jpg', caption: '视觉检测软件窗口 · 车身图像标注 03', name: '乾锦实习现场 03 · 检测软件窗口' },
-                    { img: 'assets/qianjin_vision_work/qianjin_vision_04.jpg', caption: '视觉检测软件窗口 · 车身图像标注 04', name: '乾锦实习现场 04 · 检测软件窗口' },
-                    { img: 'assets/qianjin_vision_work/qianjin_vision_05.jpg', caption: '质检系统 · 检测记录列表 05', name: '乾锦实习现场 05 · 质检记录' },
-                    { img: 'assets/qianjin_vision_work/qianjin_vision_06.jpg', caption: '产线检测工位 · 系统运行中 06', name: '乾锦实习现场 06 · 检测工位' },
-                    { img: 'assets/qianjin_vision_work/qianjin_vision_07.jpg', caption: '产线视觉检测工位实景 07', name: '乾锦实习现场 07 · 视觉检测工位' },
-                    { img: 'assets/qianjin_vision_work/qianjin_vision_08.jpg', caption: '产线视觉检测工位实景 08', name: '乾锦实习现场 08 · 视觉检测工位' },
-                    { img: 'assets/qianjin_vision_work/qianjin_vision_09.jpg', caption: '上汽通用五菱产线 · 质量岛 09', name: '乾锦实习现场 09 · 质量岛' },
-                    { img: 'assets/qianjin_vision_work/qianjin_vision_10.jpg', caption: '检测判定屏 · OK 判定 10', name: '乾锦实习现场 10 · 检测判定屏' },
-                    { img: 'assets/qianjin_vision_work/qianjin_vision_11.jpg', caption: '检测判定屏 · 检测结果 11', name: '乾锦实习现场 11 · 检测判定屏' },
-                    { img: 'assets/qianjin_vision_work/qianjin_vision_12.jpg', caption: '检测工位 · 判定屏实操 12', name: '乾锦实习现场 12 · 检测判定屏' },
-                    { img: 'assets/qianjin_vision_work/qianjin_vision_13.jpg', caption: '检测判定屏 · 结果复核 13', name: '乾锦实习现场 13 · 检测判定屏' },
-                    { img: 'assets/qianjin_vision_work/qianjin_vision_14.jpg', caption: '缺陷查看窗口 · 检测图像 14', name: '乾锦实习现场 14 · 缺陷查看窗口' },
-                    { img: 'assets/qianjin_vision_work/qianjin_vision_15.jpg', caption: '缺陷查看窗口 · 检测图像 15', name: '乾锦实习现场 15 · 缺陷查看窗口' },
-                    { img: 'assets/qianjin_vision_work/qianjin_vision_16.jpg', caption: '缺陷查看窗口 · 检测图像 16', name: '乾锦实习现场 16 · 缺陷查看窗口' },
-                    { img: 'assets/qianjin_vision_work/qianjin_vision_17.jpg', caption: '缺陷检测 · NG 判定画面 17', name: '乾锦实习现场 17 · NG 判定画面' },
+                    { img: 'assets/qianjin_vision_work/qianjin_vision_17.jpg', caption: '视觉检测系统 · NG 缺陷判定画面（红线标记）', name: '乾锦实习 · NG 缺陷判定画面' },
+                    { img: 'assets/qianjin_vision_work/qianjin_vision_10.jpg', caption: '3D 检测判定屏 · OK 实时判定', name: '乾锦实习 · 3D 检测判定屏 OK' },
+                    { img: 'assets/qianjin_vision_work/qianjin_vision_15.jpg', caption: '缺陷查看窗口 · 检测图像复核（一）', name: '乾锦实习 · 缺陷查看窗口（一）' },
+                    { img: 'assets/qianjin_vision_work/qianjin_vision_16.jpg', caption: '缺陷查看窗口 · 检测图像复核（二）', name: '乾锦实习 · 缺陷查看窗口（二）' },
                     { img: 'assets/internship_certificate/qianjin_internship_certificate_cn.jpg', caption: '实习证明证书——柳州乾锦智能装备', name: '实习证明——柳州乾锦智能装备（机器人视觉检测，2026.01-2026.04）' }
                 ],
+                album: [
+                    { img: 'assets/qianjin_vision_work/qianjin_vision_01.jpg', name: '乾锦实习现场 01 · 视觉检测工位' },
+                    { img: 'assets/qianjin_vision_work/qianjin_vision_02.jpg', name: '乾锦实习现场 02 · 视觉检测工位' },
+                    { img: 'assets/qianjin_vision_work/qianjin_vision_03.jpg', name: '乾锦实习现场 03 · 检测软件窗口' },
+                    { img: 'assets/qianjin_vision_work/qianjin_vision_04.jpg', name: '乾锦实习现场 04 · 检测软件窗口' },
+                    { img: 'assets/qianjin_vision_work/qianjin_vision_05.jpg', name: '乾锦实习现场 05 · 质检记录' },
+                    { img: 'assets/qianjin_vision_work/qianjin_vision_06.jpg', name: '乾锦实习现场 06 · 检测工位' },
+                    { img: 'assets/qianjin_vision_work/qianjin_vision_07.jpg', name: '乾锦实习现场 07 · 视觉检测工位' },
+                    { img: 'assets/qianjin_vision_work/qianjin_vision_08.jpg', name: '乾锦实习现场 08 · 视觉检测工位' },
+                    { img: 'assets/qianjin_vision_work/qianjin_vision_09.jpg', name: '乾锦实习现场 09 · 质量岛' },
+                    { img: 'assets/qianjin_vision_work/qianjin_vision_10.jpg', name: '乾锦实习现场 10 · 检测判定屏' },
+                    { img: 'assets/qianjin_vision_work/qianjin_vision_11.jpg', name: '乾锦实习现场 11 · 检测判定屏' },
+                    { img: 'assets/qianjin_vision_work/qianjin_vision_12.jpg', name: '乾锦实习现场 12 · 检测判定屏' },
+                    { img: 'assets/qianjin_vision_work/qianjin_vision_13.jpg', name: '乾锦实习现场 13 · 检测判定屏' },
+                    { img: 'assets/qianjin_vision_work/qianjin_vision_14.jpg', name: '乾锦实习现场 14 · 缺陷查看窗口' },
+                    { img: 'assets/qianjin_vision_work/qianjin_vision_15.jpg', name: '乾锦实习现场 15 · 缺陷查看窗口' },
+                    { img: 'assets/qianjin_vision_work/qianjin_vision_16.jpg', name: '乾锦实习现场 16 · 缺陷查看窗口' },
+                    { img: 'assets/qianjin_vision_work/qianjin_vision_17.jpg', name: '乾锦实习现场 17 · NG 判定画面' }
+                ],
+                albumLabel: '📷 查看全部 17 张实习工作照',
                 enCert: { img: 'assets/internship_certificate/qianjin_internship_certificate_en.jpg', name: '实习证明（英文版）—— 柳州乾锦智能装备 Internship Certificate (EN)' },
                 tags: ['YOLO', '线结构光3D测量', 'OpenCV', '缺陷检测']
             },
@@ -502,6 +442,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     e.stopPropagation();
                     openLightbox(project.enCert.img, project.enCert.name, 0, [project.enCert]);
                 });
+                if (project.album && project.album.length) {
+                    const albumBtn = document.createElement('button');
+                    albumBtn.className = 'project-en-btn';
+                    albumBtn.textContent = project.albumLabel || ('📷 查看全部 ' + project.album.length + ' 张照片');
+                    albumBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const list = project.album.map(a => ({ img: a.img, name: a.name }));
+                        openLightbox(list[0].img, list[0].name, 0, list);
+                    });
+                    panel.querySelector('.pp-text').appendChild(albumBtn);
+                }
                 projectsContainer.appendChild(panel);
                 return;
             }
