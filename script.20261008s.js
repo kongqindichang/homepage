@@ -330,8 +330,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 description: '论文题目《Spatiotemporal Meta-Reinforcement Learning for Multi-USV Adversarial Games Using a Hybrid GAT-Transformer》。提出Adv-TransAC时空元强化学习框架：GAT-Transformer+CTDE架构与动态多模态注意力融合，实现空间建模、时序推理与异构传感器融合；引入对抗元学习与课程学习，对抗成功率78.5%，通信带宽降低约70%，单步推理18.6ms。',
                 gallery: [
                     { img: 'assets/research_paper_figs/jmse_multimodal_fusion_pipeline_v2.png', caption: 'Figure 4 · 动态多模态融合管线', name: '论文配图 Figure 4 · 动态多模态融合管线（3D 渲染示意）' },
-                    { img: 'assets/research_paper_figs/jmse_performance_comparison_v2.png', caption: 'Figure 8 · 与基线算法的性能对比', name: '论文配图 Figure 8 · 不同算法对学习型对手的性能对比', span: 2 },
-                    { img: 'assets/research_paper_figs/jmse_attention_visualization_v2.png', caption: 'Figure 11 · 注意力机制可视化', name: '论文配图 Figure 11 · Adv-TransAC 注意力机制可视化', span: 2 },
+                    { img: 'assets/research_paper_figs/jmse_performance_comparison_v2.png', caption: 'Figure 8 · 与基线算法的性能对比', name: '论文配图 Figure 8 · 不同算法对学习型对手的性能对比', span: 3 },
+                    { img: 'assets/research_paper_figs/jmse_attention_visualization_v2.png', caption: 'Figure 11 · 注意力机制可视化', name: '论文配图 Figure 11 · Adv-TransAC 注意力机制可视化', span: 3 },
                     { img: 'assets/research_paper_certification/paper_jmse_multi_usv_meta_rl_2025.png', caption: '论文发表证书 · 第一作者', name: 'Spatiotemporal Meta-RL for Multi-USV Adversarial Games（JMSE 2025，第一作者）论文发表证书', span: 2 }],
                 link: '#',
                 tags: ['第一作者', '多智能体强化学习', 'GAT', 'Transformer', 'CTDE', 'PyTorch']
@@ -352,7 +352,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 description: '论文正式题目（以期刊证书为准）《Orchard-YOLO: A Robust Deep Learning Framework for Fruit Detection under Complex Optical and Environmental Degradation》。参与轻量化检测网络研发与边缘部署：Ghost 卷积骨干 + CA 增强特征融合 + P2 高分辨率检测头，实现遮挡与光照鲁棒识别及 Jetson 边缘设备实时推理。',
                 gallery: [
                     { img: 'assets/research_paper_figs/orchardyolo_architecture.png', caption: 'Figure 2 · Orchard-YOLO 整体架构', name: '论文配图 Figure 2 · Orchard-YOLO 整体架构：Ghost 卷积骨干 + CA 增强特征融合 + P2 高分辨率检测头（Photonics 2026）', span: 2 },
-                    { img: 'assets/research_paper_figs/orchardyolo_occlusion_results.jpg', caption: 'Figure 8 · 遮挡递增检测成果', name: '论文配图 Figure 8 · 清洁 / 30% / 70% 遮挡下检测成果对比：重度遮挡下 YOLOv13 仍保持更多果实定位' , span: 2 },
+                    { img: 'assets/research_paper_figs/orchardyolo_occlusion_results.jpg', caption: 'Figure 8 · 遮挡递增检测成果', name: '论文配图 Figure 8 · 清洁 / 30% / 70% 遮挡下检测成果对比：重度遮挡下 YOLOv13 仍保持更多果实定位' , span: 3 },
                     { img: 'assets/research_paper_figs/orchardyolo_robustness.png', caption: 'Figure 11 · 鲁棒性得分对比', name: '论文配图 Figure 11 · 遮挡/光照/尺度/复合应力下的鲁棒性得分对比（YOLOv13 相对 YOLOv8 全面占优）' , span: 2 },
                     { img: 'assets/research_paper_certification/paper_photonics_orchard_yolo_2026.jpg', caption: '论文发表证书', name: 'Orchard-YOLO（Photonics 2026）论文发表证书', span: 2 }
                 ],
@@ -500,6 +500,17 @@ document.addEventListener('DOMContentLoaded', function() {
                         const i = parseInt(item.dataset.i, 10);
                         openLightbox(lbList[i].img, lbList[i].name, i, lbList);
                     });
+                });
+                gallery.filter(g => g.span === 3).forEach(g => {
+                    const wf = document.createElement('figure');
+                    wf.className = 'pp-item pp-wide';
+                    wf.innerHTML = '<div class="pgi-frame"><img src="' + g.img + '" alt="' + g.caption + '"></div><figcaption>' + g.caption + '</figcaption>';
+                    wf.addEventListener('click', () => {
+                        const i = gallery.indexOf(g);
+                        openLightbox(lbList[i].img, lbList[i].name, i, lbList);
+                    });
+                    const certEl = panel.querySelector('.pp-cert');
+                    if (certEl) panel.insertBefore(wf, certEl); else panel.appendChild(wf);
                 });
                 const enBtn = panel.querySelector('.project-en-btn');
                 if (enBtn) enBtn.addEventListener('click', (e) => {
