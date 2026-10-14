@@ -330,8 +330,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 description: '论文题目《Spatiotemporal Meta-Reinforcement Learning for Multi-USV Adversarial Games Using a Hybrid GAT-Transformer》。提出Adv-TransAC时空元强化学习框架：GAT-Transformer+CTDE架构与动态多模态注意力融合，实现空间建模、时序推理与异构传感器融合；引入对抗元学习与课程学习，对抗成功率78.5%，通信带宽降低约70%，单步推理18.6ms。',
                 gallery: [
                     { img: 'assets/research_paper_figs/jmse_multimodal_fusion_pipeline_v2.png', caption: 'Figure 4 · 动态多模态融合管线', name: '论文配图 Figure 4 · 动态多模态融合管线（3D 渲染示意）', span: 2 },
-                    { img: 'assets/research_paper_figs/jmse_performance_comparison.png', caption: 'Figure 8 · 与基线算法的性能对比', name: '论文配图 Figure 8 · 不同算法对学习型对手的性能对比' },
-                    { img: 'assets/research_paper_figs/jmse_attention_visualization.png', caption: 'Figure 11 · 注意力机制可视化', name: '论文配图 Figure 11 · Adv-TransAC 注意力机制可视化' },
+                    { img: 'assets/research_paper_figs/jmse_performance_comparison_v2.png', caption: 'Figure 8 · 与基线算法的性能对比', name: '论文配图 Figure 8 · 不同算法对学习型对手的性能对比' },
+                    { img: 'assets/research_paper_figs/jmse_attention_visualization_v2.png', caption: 'Figure 11 · 注意力机制可视化', name: '论文配图 Figure 11 · Adv-TransAC 注意力机制可视化' },
                     { img: 'assets/research_paper_certification/paper_jmse_multi_usv_meta_rl_2025.png', caption: '论文发表证书 · 第一作者', name: 'Spatiotemporal Meta-RL for Multi-USV Adversarial Games（JMSE 2025，第一作者）论文发表证书', span: 2 }],
                 link: '#',
                 tags: ['第一作者', '多智能体强化学习', 'GAT', 'Transformer', 'CTDE', 'PyTorch']
